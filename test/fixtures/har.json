@@ -92,7 +92,7 @@
       "params": [
         {
           "name": "foo",
-          "fileName": "../tests/unicycle.jpg",
+          "fileName": "../test/unicycle.jpg",
           "contentType": "image/jpeg"
         }
       ]
