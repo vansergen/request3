@@ -26,7 +26,7 @@ suite("Agent", () => {
 
       socket.on("close", () => {
         const { length } = Object.keys(req.agent.sockets);
-        assert.equal(length, 0, "0 open sockets");
+        assert.deepStrictEqual(length, 0, "0 open sockets");
         done();
       });
       socket.end();
@@ -49,7 +49,7 @@ suite("Agent", () => {
 
       socket.on("close", () => {
         const { length } = Object.keys(req.agent.sockets);
-        assert.equal(length, 0, "0 open sockets");
+        assert.deepStrictEqual(length, 0, "0 open sockets");
         done();
       });
       socket.end();
@@ -70,7 +70,7 @@ suite("Agent", () => {
 
       socket.on("close", () => {
         const { length } = Object.keys(req.agent.sockets);
-        assert.equal(length, 0, "0 open sockets");
+        assert.deepStrictEqual(length, 0, "0 open sockets");
         done();
       });
       socket.end();
@@ -92,7 +92,7 @@ suite("Agent", () => {
 
       socket.on("close", () => {
         const { length } = Object.keys(req.agent.sockets);
-        assert.equal(length, 0, "0 open sockets");
+        assert.deepStrictEqual(length, 0, "0 open sockets");
         done();
       });
       socket.end();
