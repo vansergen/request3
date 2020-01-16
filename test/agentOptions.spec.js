@@ -1,5 +1,5 @@
 // agent.spec.js modifies the process state
-// causing these tests to fail when running under single process via tape
+// causing these tests to fail when running under single process via mocha
 delete require.cache[require.resolve("../index")];
 delete require.cache[require.resolve("../request")];
 const request = require("../index");
