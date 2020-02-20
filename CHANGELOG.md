@@ -1,6 +1,7 @@
 ## Change Log
 
 ### v2.88.0 (2018/08/10)
+
 - [#2996](https://github.com/request/request/pull/2996) fix(uuid): import versioned uuid (@kwonoj)
 - [#2994](https://github.com/request/request/pull/2994) Update to oauth-sign 0.9.0 (@dlecocq)
 - [#2993](https://github.com/request/request/pull/2993) Fix header tests (@simov)
@@ -9,24 +10,30 @@
 - [#2977](https://github.com/request/request/pull/2977) Update test certificates (@simov)
 
 ### v2.87.0 (2018/05/21)
+
 - [#2943](https://github.com/request/request/pull/2943) Replace hawk dependency with a local implemenation (#2943) (@hueniverse)
 
 ### v2.86.0 (2018/05/15)
+
 - [#2885](https://github.com/request/request/pull/2885) Remove redundant code (for Node.js 0.9.4 and below) and dependency (@ChALkeR)
 - [#2942](https://github.com/request/request/pull/2942) Make Test GREEN Again! (@simov)
 - [#2923](https://github.com/request/request/pull/2923) Alterations for failing CI tests (@gareth-robinson)
 
 ### v2.85.0 (2018/03/12)
+
 - [#2880](https://github.com/request/request/pull/2880) Revert "Update hawk to 7.0.7 (#2880)" (@simov)
 
 ### v2.84.0 (2018/03/12)
+
 - [#2793](https://github.com/request/request/pull/2793) Fixed calculation of oauth_body_hash, issue #2792 (@dvishniakov)
 - [#2880](https://github.com/request/request/pull/2880) Update hawk to 7.0.7 (#2880) (@kornel-kedzierski)
 
 ### v2.83.0 (2017/09/27)
+
 - [#2776](https://github.com/request/request/pull/2776) Updating tough-cookie due to security fix. (#2776) (@karlnorling)
 
 ### v2.82.0 (2017/09/19)
+
 - [#2703](https://github.com/request/request/pull/2703) Add Node.js v8 to Travis CI (@ryysud)
 - [#2751](https://github.com/request/request/pull/2751) Update of hawk and qs to latest version (#2751) (@Olivier-Moreau)
 - [#2658](https://github.com/request/request/pull/2658) Fixed some text in README.md (#2658) (@Marketionist)
@@ -38,9 +45,10 @@
 - [#2598](https://github.com/request/request/pull/2598) Update codecov to version 2.0.2 🚀 (@greenkeeperio-bot)
 - [#2590](https://github.com/request/request/pull/2590) Adds test-timing keepAlive test (@nicjansma)
 - [#2589](https://github.com/request/request/pull/2589) fix tabulation on request example README.MD (@odykyi)
-- [#2594](https://github.com/request/request/pull/2594) chore(dependencies): har-validator to 5.x [removes babel dep] (@ahmadnassri)
+- [#2594](https://github.com/request/request/pull/2594) chore(dependencies): har-validator to 5.x [removes babel dep](@ahmadnassri)
 
 ### v2.81.0 (2017/03/09)
+
 - [#2584](https://github.com/request/request/pull/2584) Security issue: Upgrade qs to version 6.4.0 (@sergejmueller)
 - [#2578](https://github.com/request/request/pull/2578) safe-buffer doesn't zero-fill by default, its just a polyfill. (#2578) (@mikeal)
 - [#2566](https://github.com/request/request/pull/2566) Timings: Tracks 'lookup', adds 'wait' time, fixes connection re-use (#2566) (@nicjansma)
@@ -48,6 +56,7 @@
 - [#2573](https://github.com/request/request/pull/2573) fixes #2572 (@ahmadnassri)
 
 ### v2.80.0 (2017/03/04)
+
 - [#2571](https://github.com/request/request/pull/2571) Correctly format the Host header for IPv6 addresses (@JamesMGreene)
 - [#2558](https://github.com/request/request/pull/2558) Update README.md example snippet (@FredKSchott)
 - [#2221](https://github.com/request/request/pull/2221) Adding a simple Response object reference in argument specification (@calamarico)
@@ -60,6 +69,7 @@
 - [#2492](https://github.com/request/request/pull/2492) More lenient gzip decompression (@addaleax)
 
 ### v2.79.0 (2016/11/18)
+
 - [#2368](https://github.com/request/request/pull/2368) Fix typeof check in test-pool.js (@forivall)
 - [#2394](https://github.com/request/request/pull/2394) Use `files` in package.json (@SimenB)
 - [#2463](https://github.com/request/request/pull/2463) AWS support for session tokens for temporary credentials (@simov)
@@ -68,15 +78,18 @@
 - [#2448](https://github.com/request/request/pull/2448) Make other connect timeout test more reliable too (@mscdex)
 
 ### v2.78.0 (2016/11/03)
+
 - [#2447](https://github.com/request/request/pull/2447) Always set request timeout on keep-alive connections (@mscdex)
 
 ### v2.77.0 (2016/11/03)
+
 - [#2439](https://github.com/request/request/pull/2439) Fix socket 'connect' listener handling (@mscdex)
 - [#2442](https://github.com/request/request/pull/2442) 👻😱 Node.js 0.10 is unmaintained 😱👻 (@greenkeeperio-bot)
 - [#2435](https://github.com/request/request/pull/2435) Add followOriginalHttpMethod to redirect to original HTTP method (@kirrg001)
 - [#2414](https://github.com/request/request/pull/2414) Improve test-timeout reliability (@mscdex)
 
 ### v2.76.0 (2016/10/25)
+
 - [#2424](https://github.com/request/request/pull/2424) Handle buffers directly instead of using "bl" (@zertosh)
 - [#2415](https://github.com/request/request/pull/2415) Re-enable timeout tests on Travis + other fixes (@mscdex)
 - [#2431](https://github.com/request/request/pull/2431) Improve timeouts accuracy and node v6.8.0+ compatibility (@mscdex, @greenkeeperio-bot)
@@ -88,6 +101,7 @@
 - [#2393](https://github.com/request/request/pull/2393) Update form-data to version 2.1.0 🚀 (@greenkeeperio-bot)
 
 ### v2.75.0 (2016/09/17)
+
 - [#2381](https://github.com/request/request/pull/2381) Drop support for Node 0.10 (@simov)
 - [#2377](https://github.com/request/request/pull/2377) Update form-data to version 2.0.0 🚀 (@greenkeeperio-bot)
 - [#2353](https://github.com/request/request/pull/2353) Add greenkeeper ignored packages (@simov)
@@ -96,10 +110,12 @@
 - [#2349](https://github.com/request/request/pull/2349) Check error type instead of string (@scotttrinh)
 
 ### v2.74.0 (2016/07/22)
+
 - [#2295](https://github.com/request/request/pull/2295) Update tough-cookie to 2.3.0 (@stash-sfdc)
 - [#2280](https://github.com/request/request/pull/2280) Update karma-tap to version 2.0.1 🚀 (@greenkeeperio-bot)
 
 ### v2.73.0 (2016/07/09)
+
 - [#2240](https://github.com/request/request/pull/2240) Remove connectionErrorHandler to fix #1903 (@zarenner)
 - [#2251](https://github.com/request/request/pull/2251) tape@4.6.0 breaks build 🚨 (@greenkeeperio-bot)
 - [#2225](https://github.com/request/request/pull/2225) Update docs (@ArtskydJ)
@@ -115,6 +131,7 @@
 - [#2200](https://github.com/request/request/pull/2200) Update karma-cli to version 1.0.0 🚀 (@greenkeeperio-bot)
 
 ### v2.72.0 (2016/04/17)
+
 - [#2176](https://github.com/request/request/pull/2176) Do not try to pipe Gzip responses with no body (@simov)
 - [#2175](https://github.com/request/request/pull/2175) Add 'delete' alias for the 'del' API method (@simov, @MuhanZou)
 - [#2172](https://github.com/request/request/pull/2172) Add support for deflate content encoding (@czardoz)
@@ -123,9 +140,11 @@
 - [#2167](https://github.com/request/request/pull/2167) Fix TravisCI badge reference master branch (@a0viedo)
 
 ### v2.71.0 (2016/04/12)
+
 - [#2164](https://github.com/request/request/pull/2164) Catch errors from the underlying http module (@simov)
 
 ### v2.70.0 (2016/04/05)
+
 - [#2147](https://github.com/request/request/pull/2147) Update eslint to version 2.5.3 🚀 (@simov, @greenkeeperio-bot)
 - [#2009](https://github.com/request/request/pull/2009) Support JSON stringify replacer argument. (@elyobo)
 - [#2142](https://github.com/request/request/pull/2142) Update eslint to version 2.5.1 🚀 (@greenkeeperio-bot)
@@ -141,14 +160,16 @@
 - [#2054](https://github.com/request/request/pull/2054) Update qs to version 6.1.0 🚀 (@greenkeeperio-bot)
 
 ### v2.69.0 (2016/01/27)
+
 - [#2041](https://github.com/request/request/pull/2041) restore aws4 as regular dependency (@rmg)
 
 ### v2.68.0 (2016/01/27)
+
 - [#2036](https://github.com/request/request/pull/2036) Add AWS Signature Version 4 (@simov, @mirkods)
 - [#2022](https://github.com/request/request/pull/2022) Convert numeric multipart bodies to string (@simov, @feross)
 - [#2024](https://github.com/request/request/pull/2024) Update har-validator dependency for nsp advisory #76 (@TylerDixon)
 - [#2016](https://github.com/request/request/pull/2016) Update qs to version 6.0.2 🚀 (@greenkeeperio-bot)
-- [#2007](https://github.com/request/request/pull/2007) Use the `extend` module instead of util._extend (@simov)
+- [#2007](https://github.com/request/request/pull/2007) Use the `extend` module instead of util.\_extend (@simov)
 - [#2003](https://github.com/request/request/pull/2003) Update browserify to version 13.0.0 🚀 (@greenkeeperio-bot)
 - [#1989](https://github.com/request/request/pull/1989) Update buffer-equal to version 1.0.0 🚀 (@greenkeeperio-bot)
 - [#1956](https://github.com/request/request/pull/1956) Check form-data content-length value before setting up the header (@jongyoonlee)
@@ -159,9 +180,11 @@
 - [#1915](https://github.com/request/request/pull/1915) Remove content-length and transfer-encoding headers from defaultProxyHeaderWhiteList (@yaxia)
 
 ### v2.67.0 (2015/11/19)
+
 - [#1913](https://github.com/request/request/pull/1913) Update http-signature to version 1.1.0 🚀 (@greenkeeperio-bot)
 
 ### v2.66.0 (2015/11/18)
+
 - [#1906](https://github.com/request/request/pull/1906) Update README URLs based on HTTP redirects (@ReadmeCritic)
 - [#1905](https://github.com/request/request/pull/1905) Convert typed arrays into regular buffers (@simov)
 - [#1902](https://github.com/request/request/pull/1902) node-uuid@1.4.7 breaks build 🚨 (@greenkeeperio-bot)
@@ -184,6 +207,7 @@
 - [#1845](https://github.com/request/request/pull/1845) Update istanbul to version 0.4.0 🚀 (@greenkeeperio-bot)
 
 ### v2.65.0 (2015/10/11)
+
 - [#1833](https://github.com/request/request/pull/1833) Update aws-sign2 to version 0.6.0 🚀 (@greenkeeperio-bot)
 - [#1811](https://github.com/request/request/pull/1811) Enable loose cookie parsing in tough-cookie (@Sebmaster)
 - [#1830](https://github.com/request/request/pull/1830) Bring back tilde ranges for all dependencies (@simov)
@@ -199,15 +223,18 @@
 - [#1788](https://github.com/request/request/pull/1788) Pinned all dependencies (@greenkeeperio-bot)
 
 ### v2.64.0 (2015/09/25)
+
 - [#1787](https://github.com/request/request/pull/1787) npm ignore examples, release.sh and disabled.appveyor.yml (@thisconnect)
 - [#1775](https://github.com/request/request/pull/1775) Fix typo in README.md (@djchie)
 - [#1776](https://github.com/request/request/pull/1776) Changed word 'conjuction' to read 'conjunction' in README.md (@ryanwholey)
 - [#1785](https://github.com/request/request/pull/1785) Revert: Set default application/json content-type when using json option #1772 (@simov)
 
 ### v2.63.0 (2015/09/21)
+
 - [#1772](https://github.com/request/request/pull/1772) Set default application/json content-type when using json option (@jzaefferer)
 
 ### v2.62.0 (2015/09/15)
+
 - [#1768](https://github.com/request/request/pull/1768) Add node 4.0 to the list of build targets (@simov)
 - [#1767](https://github.com/request/request/pull/1767) Query strings now cooperate with unix sockets (@JoshWillik)
 - [#1750](https://github.com/request/request/pull/1750) Revert doc about installation of tough-cookie added in #884 (@LoicMahieu)
@@ -215,6 +242,7 @@
 - [#1743](https://github.com/request/request/pull/1743) Fix options not being initialized in defaults method (@simov)
 
 ### v2.61.0 (2015/08/19)
+
 - [#1721](https://github.com/request/request/pull/1721) Minor fix in README.md (@arbaaz)
 - [#1733](https://github.com/request/request/pull/1733) Avoid useless Buffer transformation (@michelsalib)
 - [#1726](https://github.com/request/request/pull/1726) Update README.md (@paulomcnally)
@@ -225,11 +253,13 @@
 - [#1700](https://github.com/request/request/pull/1700) debug() when JSON.parse() on a response body fails (@phillipj)
 
 ### v2.60.0 (2015/07/21)
+
 - [#1687](https://github.com/request/request/pull/1687) Fix caseless bug - content-type not being set for multipart/form-data (@simov, @garymathews)
 
 ### v2.59.0 (2015/07/20)
+
 - [#1671](https://github.com/request/request/pull/1671) Add tests and docs for using the agent, agentClass, agentOptions and forever options.
- Forever option defaults to using http(s).Agent in node 0.12+ (@simov)
+  Forever option defaults to using http(s).Agent in node 0.12+ (@simov)
 - [#1679](https://github.com/request/request/pull/1679) Fix - do not remove OAuth param when using OAuth realm (@simov, @jhalickman)
 - [#1668](https://github.com/request/request/pull/1668) updated dependencies (@deamme)
 - [#1656](https://github.com/request/request/pull/1656) Fix form method (@simov)
@@ -239,15 +269,18 @@
 - [#1646](https://github.com/request/request/pull/1646) Clarify the nature of setting `ca` in `agentOptions` (@jeffcharles)
 
 ### v2.58.0 (2015/06/16)
+
 - [#1638](https://github.com/request/request/pull/1638) Use the `extend` module to deep extend in the defaults method (@simov)
 - [#1631](https://github.com/request/request/pull/1631) Move tunnel logic into separate module (@simov)
 - [#1634](https://github.com/request/request/pull/1634) Fix OAuth query transport_method (@simov)
 - [#1603](https://github.com/request/request/pull/1603) Add codecov (@simov)
 
 ### v2.57.0 (2015/05/31)
+
 - [#1615](https://github.com/request/request/pull/1615) Replace '.client' with '.socket' as the former was deprecated in 2.2.0. (@ChALkeR)
 
 ### v2.56.0 (2015/05/28)
+
 - [#1610](https://github.com/request/request/pull/1610) Bump module dependencies (@simov)
 - [#1600](https://github.com/request/request/pull/1600) Extract the querystring logic into separate module (@simov)
 - [#1607](https://github.com/request/request/pull/1607) Re-generate certificates (@simov)
@@ -271,6 +304,7 @@
 - [#1516](https://github.com/request/request/pull/1516) forever+pool test (@devTristan)
 
 ### v2.55.0 (2015/04/05)
+
 - [#1520](https://github.com/request/request/pull/1520) Refactor defaults (@simov)
 - [#1525](https://github.com/request/request/pull/1525) Delete request headers with undefined value. (@froatsnook)
 - [#1521](https://github.com/request/request/pull/1521) Add promise tests (@simov)
@@ -280,6 +314,7 @@
 - [#1510](https://github.com/request/request/pull/1510) Fix basic auth form data (@simov)
 
 ### v2.54.0 (2015/03/24)
+
 - [#1501](https://github.com/request/request/pull/1501) HTTP Archive 1.2 support (@ahmadnassri)
 - [#1486](https://github.com/request/request/pull/1486) Add a test for the forever agent (@akshayp)
 - [#1500](https://github.com/request/request/pull/1500) Adding handling for no auth method and null bearer (@philberg)
@@ -292,7 +327,7 @@
 - [#1469](https://github.com/request/request/pull/1469) Feature/base url (@froatsnook)
 - [#1459](https://github.com/request/request/pull/1459) Add option to time request/response cycle (including rollup of redirects) (@aaron-em)
 - [#1468](https://github.com/request/request/pull/1468) Re-enable io.js/node 0.12 build (@simov, @mikeal, @BBB)
-- [#1442](https://github.com/request/request/pull/1442) Fixed the issue with strictSSL tests on  0.12 & io.js by explicitly setting a cipher that matches the cert. (@BBB, @nickmccurdy, @demohi, @simov, @0x4139)
+- [#1442](https://github.com/request/request/pull/1442) Fixed the issue with strictSSL tests on 0.12 & io.js by explicitly setting a cipher that matches the cert. (@BBB, @nickmccurdy, @demohi, @simov, @0x4139)
 - [#1460](https://github.com/request/request/pull/1460) localAddress or proxy config is lost when redirecting (@simov, @0x4139)
 - [#1453](https://github.com/request/request/pull/1453) Test on Node.js 0.12 and io.js with allowed failures (@nickmccurdy, @demohi)
 - [#1426](https://github.com/request/request/pull/1426) Fixing tests to pass on io.js and node 0.12 (only test-https.js stiff failing) (@mikeal)
@@ -308,10 +343,12 @@
 - [#1397](https://github.com/request/request/pull/1397) Improve pipe-from-file tests (@nylen)
 
 ### v2.53.0 (2015/02/02)
+
 - [#1396](https://github.com/request/request/pull/1396) Do not rfc3986 escape JSON bodies (@nylen, @simov)
 - [#1392](https://github.com/request/request/pull/1392) Improve `timeout` option description (@watson)
 
 ### v2.52.0 (2015/02/02)
+
 - [#1383](https://github.com/request/request/pull/1383) Add missing HTTPS options that were not being passed to tunnel (@brichard19) (@nylen)
 - [#1388](https://github.com/request/request/pull/1388) Upgrade mime-types package version (@roderickhsiao)
 - [#1389](https://github.com/request/request/pull/1389) Revise Setup Tunnel Function (@seanstrom)
@@ -344,9 +381,11 @@
 - [#1317](https://github.com/request/request/pull/1317) Improve OAuth1.0 server side flow example (@simov)
 
 ### v2.51.0 (2014/12/10)
+
 - [#1310](https://github.com/request/request/pull/1310) Revert changes introduced in https://github.com/request/request/pull/1282 (@simov)
 
 ### v2.50.0 (2014/12/09)
+
 - [#1308](https://github.com/request/request/pull/1308) Add browser test to keep track of browserify compability. (@eiriksm)
 - [#1299](https://github.com/request/request/pull/1299) Add optional support for jsonReviver (@poislagarde)
 - [#1277](https://github.com/request/request/pull/1277) Add Coveralls configuration (@simov)
@@ -355,6 +394,7 @@
 - [#1288](https://github.com/request/request/pull/1288) Update README.md to explain custom file use case (@cliffcrosland)
 
 ### v2.49.0 (2014/11/28)
+
 - [#1295](https://github.com/request/request/pull/1295) fix(proxy): no-proxy false positive (@oliamb)
 - [#1292](https://github.com/request/request/pull/1292) Upgrade `caseless` to 0.8.1 (@mmalecki)
 - [#1276](https://github.com/request/request/pull/1276) Set transfer encoding for multipart/related to chunked by default (@simov)
@@ -363,6 +403,7 @@
 - [#1238](https://github.com/request/request/pull/1238) Add examples README.md (@simov)
 
 ### v2.48.0 (2014/11/12)
+
 - [#1263](https://github.com/request/request/pull/1263) Fixed a syntax error / typo in README.md (@xna2)
 - [#1253](https://github.com/request/request/pull/1253) Add multipart chunked flag (@simov, @nylen)
 - [#1251](https://github.com/request/request/pull/1251) Clarify that defaults() does not modify global defaults (@nylen)
@@ -377,6 +418,7 @@
 - [#1225](https://github.com/request/request/pull/1225) Allow header white/exclusive lists in any case. (@RReverser)
 
 ### v2.47.0 (2014/10/26)
+
 - [#1222](https://github.com/request/request/pull/1222) Move from mikeal/request to request/request (@nylen)
 - [#1220](https://github.com/request/request/pull/1220) update qs dependency to 2.3.1 (@FredKSchott)
 - [#1212](https://github.com/request/request/pull/1212) Improve tests/test-timeout.js (@nylen)
@@ -392,12 +434,13 @@
 - [#1185](https://github.com/request/request/pull/1185) Stream multipart/related bodies (@simov)
 
 ### v2.46.0 (2014/10/23)
+
 - [#1198](https://github.com/request/request/pull/1198) doc for TLS/SSL protocol options (@shawnzhu)
 - [#1200](https://github.com/request/request/pull/1200) Add a Gitter chat badge to README.md (@gitter-badger)
 - [#1196](https://github.com/request/request/pull/1196) Upgrade taper test reporter to v0.3.0 (@nylen)
 - [#1199](https://github.com/request/request/pull/1199) Fix lint error: undeclared var i (@nylen)
 - [#1191](https://github.com/request/request/pull/1191) Move self.proxy decision logic out of init and into a helper (@FredKSchott)
-- [#1190](https://github.com/request/request/pull/1190) Move _buildRequest() logic back into init (@FredKSchott)
+- [#1190](https://github.com/request/request/pull/1190) Move \_buildRequest() logic back into init (@FredKSchott)
 - [#1186](https://github.com/request/request/pull/1186) Support Smarter Unix URL Scheme (@FredKSchott)
 - [#1178](https://github.com/request/request/pull/1178) update form documentation for new usage (@FredKSchott)
 - [#1180](https://github.com/request/request/pull/1180) Enable no-mixed-requires linting rule (@nylen)
@@ -432,6 +475,7 @@
 - [#1124](https://github.com/request/request/pull/1124) linting fix: remove unneccesary semi-colons (@FredKSchott)
 
 ### v2.45.0 (2014/10/06)
+
 - [#1128](https://github.com/request/request/pull/1128) Add test for setCookie regression (@nylen)
 - [#1127](https://github.com/request/request/pull/1127) added tests around using objects as values in a query string (@bcoe)
 - [#1103](https://github.com/request/request/pull/1103) Support/refactor request constructor (@nylen, @seanstrom)
@@ -460,6 +504,7 @@
 - [#1068](https://github.com/request/request/pull/1068) add optional postamble required by .NET multipart requests (@netpoetica)
 
 ### v2.43.0 (2014/09/18)
+
 - [#1057](https://github.com/request/request/pull/1057) Defaults should not overwrite defined options (@davidwood)
 - [#1046](https://github.com/request/request/pull/1046) Propagate datastream errors, useful in case gzip fails. (@ZJONSSON, @Janpot)
 - [#1063](https://github.com/request/request/pull/1063) copy the input headers object #1060 (@finnp)
@@ -467,10 +512,12 @@
 - [#1056](https://github.com/request/request/pull/1056) Fix redirects when passing url.parse(x) as URL to convenience method (@nylen)
 
 ### v2.42.0 (2014/09/04)
+
 - [#1053](https://github.com/request/request/pull/1053) Fix #1051 Parse auth properly when using non-tunneling proxy (@isaacs)
 
 ### v2.41.0 (2014/09/04)
-- [#1050](https://github.com/request/request/pull/1050) Pass whitelisted headers to tunneling proxy.  Organize all tunneling logic. (@isaacs, @Feldhacker)
+
+- [#1050](https://github.com/request/request/pull/1050) Pass whitelisted headers to tunneling proxy. Organize all tunneling logic. (@isaacs, @Feldhacker)
 - [#1035](https://github.com/request/request/pull/1035) souped up nodei.co badge (@rvagg)
 - [#1048](https://github.com/request/request/pull/1048) Aws is now possible over a proxy (@steven-aerts)
 - [#1039](https://github.com/request/request/pull/1039) extract out helper functions to a helper file (@seanstrom)
@@ -481,36 +528,40 @@
 - [#1029](https://github.com/request/request/pull/1029) Fix a couple of typos (@nylen)
 - [#675](https://github.com/request/request/pull/675) Checking for SSL fault on connection before reading SSL properties (@VRMink)
 - [#989](https://github.com/request/request/pull/989) Added allowRedirect function. Should return true if redirect is allowed or false otherwise (@doronin)
-- [#1025](https://github.com/request/request/pull/1025) [fixes #1023] Set self._ended to true once response has ended (@mridgway)
+- [#1025](https://github.com/request/request/pull/1025) [fixes #1023] Set self.\_ended to true once response has ended (@mridgway)
 - [#1020](https://github.com/request/request/pull/1020) Add back removed debug metadata (@FredKSchott)
-- [#1008](https://github.com/request/request/pull/1008) Moving to  module instead of cutomer buffer concatenation. (@mikeal)
+- [#1008](https://github.com/request/request/pull/1008) Moving to module instead of cutomer buffer concatenation. (@mikeal)
 - [#770](https://github.com/request/request/pull/770) Added dependency badge for README file; (@timgluz, @mafintosh, @lalitkapoor, @stash, @bobyrizov)
 - [#1016](https://github.com/request/request/pull/1016) toJSON no longer results in an infinite loop, returns simple objects (@FredKSchott)
 - [#1018](https://github.com/request/request/pull/1018) Remove pre-0.4.4 HTTPS fix (@mmalecki)
 - [#1006](https://github.com/request/request/pull/1006) Migrate to caseless, fixes #1001 (@mikeal)
 - [#995](https://github.com/request/request/pull/995) Fix parsing array of objects (@sjonnet19)
 - [#999](https://github.com/request/request/pull/999) Fix fallback for browserify for optional modules. (@eiriksm)
-- [#996](https://github.com/request/request/pull/996) Wrong oauth signature when multiple same param keys exist [updated] (@bengl)
+- [#996](https://github.com/request/request/pull/996) Wrong oauth signature when multiple same param keys exist [updated](@bengl)
 
 ### v2.40.0 (2014/08/06)
+
 - [#992](https://github.com/request/request/pull/992) Fix security vulnerability. Update qs (@poeticninja)
 - [#988](https://github.com/request/request/pull/988) “--” -> “—” (@upisfree)
 - [#987](https://github.com/request/request/pull/987) Show optional modules as being loaded by the module that reqeusted them (@iarna)
 
 ### v2.39.0 (2014/07/24)
+
 - [#976](https://github.com/request/request/pull/976) Update README.md (@pvoznenko)
 
 ### v2.38.0 (2014/07/22)
+
 - [#952](https://github.com/request/request/pull/952) Adding support to client certificate with proxy use case (@ofirshaked)
 - [#884](https://github.com/request/request/pull/884) Documented tough-cookie installation. (@wbyoung)
 - [#935](https://github.com/request/request/pull/935) Correct repository url (@fritx)
 - [#963](https://github.com/request/request/pull/963) Update changelog (@nylen)
 - [#960](https://github.com/request/request/pull/960) Support gzip with encoding on node pre-v0.9.4 (@kevinoid)
 - [#953](https://github.com/request/request/pull/953) Add async Content-Length computation when using form-data (@LoicMahieu)
-- [#844](https://github.com/request/request/pull/844) Add support for HTTP[S]_PROXY environment variables.  Fixes #595. (@jvmccarthy)
+- [#844](https://github.com/request/request/pull/844) Add support for HTTP[S]\_PROXY environment variables. Fixes #595. (@jvmccarthy)
 - [#946](https://github.com/request/request/pull/946) defaults: merge headers (@aj0strow)
 
 ### v2.37.0 (2014/07/07)
+
 - [#957](https://github.com/request/request/pull/957) Silence EventEmitter memory leak warning #311 (@watson)
 - [#955](https://github.com/request/request/pull/955) check for content-length header before setting it in nextTick (@camilleanne)
 - [#951](https://github.com/request/request/pull/951) Add support for gzip content decoding (@kevinoid)
@@ -521,6 +572,7 @@
 - [#907](https://github.com/request/request/pull/907) append secureOptions to poolKey (@medovob)
 
 ### v2.35.0 (2014/05/17)
+
 - [#901](https://github.com/request/request/pull/901) Fixes #555 (@pigulla)
 - [#897](https://github.com/request/request/pull/897) merge with default options (@vohof)
 - [#891](https://github.com/request/request/pull/891) fixes 857 - options object is mutated by calling request (@lalitkapoor)
@@ -535,6 +587,7 @@
 - [#815](https://github.com/request/request/pull/815) Create changelog based on pull requests (@lalitkapoor)
 
 ### v2.34.0 (2014/02/18)
+
 - [#516](https://github.com/request/request/pull/516) UNIX Socket URL Support (@lyuzashi)
 - [#801](https://github.com/request/request/pull/801) 794 ignore cookie parsing and domain errors (@lalitkapoor)
 - [#802](https://github.com/request/request/pull/802) Added the Apache license to the package.json. (@keskival)
@@ -543,6 +596,7 @@
 - [#781](https://github.com/request/request/pull/781) simpler isReadStream function (@joaojeronimo)
 
 ### v2.32.0 (2014/01/16)
+
 - [#767](https://github.com/request/request/pull/767) Use tough-cookie CookieJar sync API (@stash)
 - [#764](https://github.com/request/request/pull/764) Case-insensitive authentication scheme (@bobyrizov)
 - [#763](https://github.com/request/request/pull/763) Upgrade tough-cookie to 0.10.0 (@stash)
@@ -550,6 +604,7 @@
 - [#757](https://github.com/request/request/pull/757) require aws-sign2 (@mafintosh)
 
 ### v2.31.0 (2014/01/08)
+
 - [#645](https://github.com/request/request/pull/645) update twitter api url to v1.1 (@mick)
 - [#746](https://github.com/request/request/pull/746) README: Markdown code highlight (@weakish)
 - [#745](https://github.com/request/request/pull/745) updating setCookie example to make it clear that the callback is required (@emkay)
@@ -637,7 +692,7 @@
 - [#363](https://github.com/request/request/pull/363) rfc3986 on base_uri, now passes tests (@jeffmarshall)
 - [#362](https://github.com/request/request/pull/362) Running `rfc3986` on `base_uri` in `oauth.hmacsign` instead of just `encodeURIComponent` (@jeffmarshall)
 - [#361](https://github.com/request/request/pull/361) Don't create a Content-Length header if we already have it set (@danjenkins)
-- [#360](https://github.com/request/request/pull/360) Delete self._form along with everything else on redirect (@jgautier)
+- [#360](https://github.com/request/request/pull/360) Delete self.\_form along with everything else on redirect (@jgautier)
 - [#355](https://github.com/request/request/pull/355) stop sending erroneous headers on redirected requests (@azylman)
 - [#332](https://github.com/request/request/pull/332) Fix #296 - Only set Content-Type if body exists (@Marsup)
 - [#343](https://github.com/request/request/pull/343) Allow AWS to work in more situations, added a note in the README on its usage (@nlf)
@@ -654,7 +709,7 @@
 - [#272](https://github.com/request/request/pull/272) Boundary begins with CRLF? (@elspoono, @timshadel, @naholyr, @nanodocumet, @TehShrike)
 - [#284](https://github.com/request/request/pull/284) Remove stray `console.log()` call in multipart generator. (@bcherry)
 - [#241](https://github.com/request/request/pull/241) Composability updates suggested by issue #239 (@polotek)
-- [#282](https://github.com/request/request/pull/282) OAuth Authorization header contains non-"oauth_" parameters (@jplock)
+- [#282](https://github.com/request/request/pull/282) OAuth Authorization header contains non-"oauth\_" parameters (@jplock)
 - [#279](https://github.com/request/request/pull/279) fix tests with boundary by injecting boundry from header (@benatkin)
 - [#273](https://github.com/request/request/pull/273) Pipe back pressure issue (@mafintosh)
 - [#268](https://github.com/request/request/pull/268) I'm not OCD seriously (@TehShrike)

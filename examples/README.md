@@ -1,4 +1,3 @@
-
 # Authentication
 
 ## OAuth
@@ -9,18 +8,22 @@
 - https://developer.yahoo.com/oauth/guide/oauth-refreshaccesstoken.html
 
 ```js
-request.post('https://api.login.yahoo.com/oauth/v2/get_token', {
-  oauth: {
-    consumer_key: '...',
-    consumer_secret: '...',
-    token: '...',
-    token_secret: '...',
-    session_handle: '...'
+request.post(
+  "https://api.login.yahoo.com/oauth/v2/get_token",
+  {
+    oauth: {
+      consumer_key: "...",
+      consumer_secret: "...",
+      token: "...",
+      token_secret: "...",
+      session_handle: "..."
+    }
+  },
+  function(err, res, body) {
+    var result = require("querystring").parse(body);
+    // assert.equal(typeof result, 'object')
   }
-}, function (err, res, body) {
-  var result = require('querystring').parse(body)
-  // assert.equal(typeof result, 'object')
-})
+);
 ```
 
 ### OAuth2 Refresh Token
@@ -28,17 +31,21 @@ request.post('https://api.login.yahoo.com/oauth/v2/get_token', {
 - https://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-6
 
 ```js
-request.post('https://accounts.google.com/o/oauth2/token', {
-  form: {
-    grant_type: 'refresh_token',
-    client_id: '...',
-    client_secret: '...',
-    refresh_token: '...'
+request.post(
+  "https://accounts.google.com/o/oauth2/token",
+  {
+    form: {
+      grant_type: "refresh_token",
+      client_id: "...",
+      client_secret: "...",
+      refresh_token: "..."
+    },
+    json: true
   },
-  json: true
-}, function (err, res, body) {
-  // assert.equal(typeof body, 'object')
-})
+  function(err, res, body) {
+    // assert.equal(typeof body, 'object')
+  }
+);
 ```
 
 # Multipart
@@ -50,30 +57,34 @@ request.post('https://accounts.google.com/o/oauth2/token', {
 - https://www.flickr.com/services/api/upload.api.html
 
 ```js
-request.post('https://up.flickr.com/services/upload', {
-  oauth: {
-    consumer_key: '...',
-    consumer_secret: '...',
-    token: '...',
-    token_secret: '...'
+request.post(
+  "https://up.flickr.com/services/upload",
+  {
+    oauth: {
+      consumer_key: "...",
+      consumer_secret: "...",
+      token: "...",
+      token_secret: "..."
+    },
+    // all meta data should be included here for proper signing
+    qs: {
+      title: "My cat is awesome",
+      description: "Sent on " + new Date(),
+      is_public: 1
+    },
+    // again the same meta data + the actual photo
+    formData: {
+      title: "My cat is awesome",
+      description: "Sent on " + new Date(),
+      is_public: 1,
+      photo: fs.createReadStream("cat.png")
+    },
+    json: true
   },
-  // all meta data should be included here for proper signing
-  qs: {
-    title: 'My cat is awesome',
-    description: 'Sent on ' + new Date(),
-    is_public: 1
-  },
-  // again the same meta data + the actual photo
-  formData: {
-    title: 'My cat is awesome',
-    description: 'Sent on ' + new Date(),
-    is_public: 1,
-    photo:fs.createReadStream('cat.png')
-  },
-  json: true
-}, function (err, res, body) {
-  // assert.equal(typeof body, 'object')
-})
+  function(err, res, body) {
+    // assert.equal(typeof body, 'object')
+  }
+);
 ```
 
 # Streams
@@ -91,27 +102,23 @@ READABLE.pipe(request.post(URL));
 A more detailed example:
 
 ```js
-var fs = require('fs')
-  , path = require('path')
-  , http = require('http')
-  , request = require('request')
-  , TMP_FILE_PATH = path.join(path.sep, 'tmp', 'foo')
-;
-
+var fs = require("fs"),
+  path = require("path"),
+  http = require("http"),
+  request = require("request"),
+  TMP_FILE_PATH = path.join(path.sep, "tmp", "foo");
 // write a temporary file:
-fs.writeFileSync(TMP_FILE_PATH, 'foo bar baz quk\n');
+fs.writeFileSync(TMP_FILE_PATH, "foo bar baz quk\n");
 
-http.createServer(function(req, res) {
-  console.log('the server is receiving data!\n');
-  req
-    .on('end', res.end.bind(res))
-    .pipe(process.stdout)
-  ;
-}).listen(3000).unref();
+http
+  .createServer(function(req, res) {
+    console.log("the server is receiving data!\n");
+    req.on("end", res.end.bind(res)).pipe(process.stdout);
+  })
+  .listen(3000)
+  .unref();
 
-fs.createReadStream(TMP_FILE_PATH)
-  .pipe(request.post('http://127.0.0.1:3000'))
-;
+fs.createReadStream(TMP_FILE_PATH).pipe(request.post("http://127.0.0.1:3000"));
 ```
 
 # Proxys
@@ -119,17 +126,20 @@ fs.createReadStream(TMP_FILE_PATH)
 Run tor on the terminal and try the following. (Needs `socks5-http-client` to connect to tor)
 
 ```js
-var request = require('../index.js');
-var Agent = require('socks5-http-client/lib/Agent');
+var request = require("../index.js");
+var Agent = require("socks5-http-client/lib/Agent");
 
-request.get({
-    url: 'http://www.tenreads.io',
+request.get(
+  {
+    url: "http://www.tenreads.io",
     agentClass: Agent,
     agentOptions: {
-        socksHost: 'localhost', // Defaults to 'localhost'.
-        socksPort: 9050 // Defaults to 1080.
+      socksHost: "localhost", // Defaults to 'localhost'.
+      socksPort: 9050 // Defaults to 1080.
     }
-}, function (err, res) {
-    console.log(res.body); 
-});
+  },
+  function(err, res) {
+    console.log(res.body);
+  }
+);
 ```

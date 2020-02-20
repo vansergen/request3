@@ -13,19 +13,12 @@ module.exports = config => {
     },
     files: ["test/browser/test.js"],
     port: 9876,
-
     reporters: ["dots", "coverage"],
-
     colors: true,
-
     logLevel: config.LOG_ERROR,
-
     autoWatch: false,
-
     browsers: ["ChromeHeadless_without_security"],
-
     singleRun: true,
-
     plugins: [
       "karma-chrome-launcher",
       "karma-coverage",
@@ -40,12 +33,8 @@ module.exports = config => {
         })
       ]
     },
-    coverageReporter: {
-      type: "lcov",
-      dir: "coverage/"
-    },
-
-    // Custom launcher to allowe self signed certs.
+    coverageReporter: { type: "lcov", dir: "coverage/" },
+    // Custom launcher to allow self signed certs.
     customLaunchers: {
       ChromeHeadless_without_security: {
         base: "ChromeHeadless",
