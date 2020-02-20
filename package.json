@@ -53,7 +53,6 @@
     "test-ci": "taper tests/test-*.js",
     "test-cov": "nyc --reporter=lcov tape tests/test-*.js",
     "test-browser": "node tests/browser/start.js",
-    "lint": "standard"
   },
   "devDependencies": {
     "bluebird": "^3.7.2",
@@ -74,7 +73,6 @@
     "puppeteer": "^2.0.0",
     "rimraf": "^3.0.0",
     "server-destroy": "^1.0.1",
-    "standard": "^14.3.1",
     "tape": "^4.13.0",
     "taper": "^0.5.0"
   },
