@@ -51,7 +51,7 @@ suite("Params", () => {
 
   test("GetJSON", done => {
     const expectedBody = { test: true };
-    const resp = Server.createGetResponse("{\"test\":true}", "application/json");
+    const resp = Server.createGetResponse('{"test":true}', "application/json");
     server.once("/GetJSON", resp);
     const uri = server.url + "/GetJSON";
     request(uri, { json: true }, (error, response, body) => {

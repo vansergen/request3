@@ -69,7 +69,7 @@ function runAllTests(strict, s) {
   });
 
   runTest("testGetJSON", {
-    resp: server.createGetResponse("{\"test\":true}", "application/json"),
+    resp: server.createGetResponse('{"test":true}', "application/json"),
     json: true,
     expectBody: { test: true }
   });

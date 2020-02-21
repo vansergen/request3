@@ -24,16 +24,16 @@ server.on("request", (request, response) => {
   if (request.url === "/test/") {
     if (request.headers.authorization) {
       testHeader = makeHeaderRegex(
-        "Digest username=\"test\"",
-        "realm=\"Private\"",
-        "nonce=\"WpcHS2/TBAA=dffcc0dbd5f96d49a5477166649b7c0ae3866a93\"",
-        "uri=\"/test/\"",
+        'Digest username="test"',
+        'realm="Private"',
+        'nonce="WpcHS2/TBAA=dffcc0dbd5f96d49a5477166649b7c0ae3866a93"',
+        'uri="/test/"',
         "qop=auth",
-        "response=\"[a-f0-9]{32}\"",
+        'response="[a-f0-9]{32}"',
         "nc=00000001",
-        "cnonce=\"[a-f0-9]{32}\"",
+        'cnonce="[a-f0-9]{32}"',
         "algorithm=MD5",
-        "opaque=\"5ccc069c403ebaf9f0171e9517f40e41\""
+        'opaque="5ccc069c403ebaf9f0171e9517f40e41"'
       );
       if (testHeader.test(request.headers.authorization)) {
         ok = true;
@@ -47,11 +47,11 @@ server.on("request", (request, response) => {
       response.setHeader(
         "www-authenticate",
         makeHeader(
-          "Digest realm=\"Private\"",
-          "nonce=\"WpcHS2/TBAA=dffcc0dbd5f96d49a5477166649b7c0ae3866a93\"",
+          'Digest realm="Private"',
+          'nonce="WpcHS2/TBAA=dffcc0dbd5f96d49a5477166649b7c0ae3866a93"',
           "algorithm=MD5",
-          "qop=\"auth\"",
-          "opaque=\"5ccc069c403ebaf9f0171e9517f40e41\""
+          'qop="auth"',
+          'opaque="5ccc069c403ebaf9f0171e9517f40e41"'
         )
       );
     }
@@ -89,14 +89,14 @@ server.on("request", (request, response) => {
       );
 
       testHeader = makeHeaderRegex(
-        "Digest username=\"" + user + "\"",
-        "realm=\"" + realm + "\"",
-        "nonce=\"" + nonce + "\"",
-        "uri=\"/test/md5-sess\"",
+        'Digest username="' + user + '"',
+        'realm="' + realm + '"',
+        'nonce="' + nonce + '"',
+        'uri="/test/md5-sess"',
         "qop=" + qop,
-        "response=\"" + response + "\"",
+        'response="' + response + '"',
         "nc=" + nonceCount,
-        "cnonce=\"" + cnonce + "\"",
+        'cnonce="' + cnonce + '"',
         "algorithm=" + algorithm
       );
 
@@ -107,10 +107,10 @@ server.on("request", (request, response) => {
       response.setHeader(
         "www-authenticate",
         makeHeader(
-          "Digest realm=\"" + realm + "\"",
-          "nonce=\"" + nonce + "\"",
+          'Digest realm="' + realm + '"',
+          'nonce="' + nonce + '"',
           "algorithm=" + algorithm,
-          "qop=\"" + qop + "\""
+          'qop="' + qop + '"'
         )
       );
     }
@@ -119,12 +119,12 @@ server.on("request", (request, response) => {
     // check: http://www.rfc-editor.org/errata_search.php?rfc=2069
     if (request.headers.authorization) {
       testHeader = makeHeaderRegex(
-        "Digest username=\"Mufasa\"",
-        "realm=\"testrealm@host.com\"",
-        "nonce=\"dcd98b7102dd2f0e8b11d0f600bfb0c093\"",
-        "uri=\"/dir/index.html\"",
-        "response=\"[a-f0-9]{32}\"",
-        "opaque=\"5ccc069c403ebaf9f0171e9517f40e41\""
+        'Digest username="Mufasa"',
+        'realm="testrealm@host.com"',
+        'nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093"',
+        'uri="/dir/index.html"',
+        'response="[a-f0-9]{32}"',
+        'opaque="5ccc069c403ebaf9f0171e9517f40e41"'
       );
       if (testHeader.test(request.headers.authorization)) {
         ok = true;
@@ -138,9 +138,9 @@ server.on("request", (request, response) => {
       response.setHeader(
         "www-authenticate",
         makeHeader(
-          "Digest realm=\"testrealm@host.com\"",
-          "nonce=\"dcd98b7102dd2f0e8b11d0f600bfb0c093\"",
-          "opaque=\"5ccc069c403ebaf9f0171e9517f40e41\""
+          'Digest realm="testrealm@host.com"',
+          'nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093"',
+          'opaque="5ccc069c403ebaf9f0171e9517f40e41"'
         )
       );
     }

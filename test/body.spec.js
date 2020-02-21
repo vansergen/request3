@@ -53,7 +53,7 @@ suite("Body", () => {
     },
     {
       name: "testGetJSON",
-      response: createGetResponse("{\"test\":true}", "application/json"),
+      response: createGetResponse('{"test":true}', "application/json"),
       json: true,
       expectBody: { test: true }
     },

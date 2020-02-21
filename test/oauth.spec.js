@@ -12,8 +12,8 @@ function getSignature(r) {
     .replace(/, /g, ",")
     .split(",")
     .forEach(v => {
-      if (v.slice(0, "oauth_signature=\"".length) === "oauth_signature=\"") {
-        sign = v.slice("oauth_signature=\"".length, -1);
+      if (v.slice(0, 'oauth_signature="'.length) === 'oauth_signature="') {
+        sign = v.slice('oauth_signature="'.length, -1);
       }
     });
   return decodeURIComponent(sign);

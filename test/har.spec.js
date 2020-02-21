@@ -80,7 +80,7 @@ suite("HAR", () => {
       assert.ok(~json.headers["content-type"].indexOf("multipart/form-data"));
       assert.ok(
         ~json.body.indexOf(
-          "Content-Disposition: form-data; name=\"foo\"; filename=\"hello.txt\"\r\nContent-Type: text/plain\r\n\r\nHello World"
+          'Content-Disposition: form-data; name="foo"; filename="hello.txt"\r\nContent-Type: text/plain\r\n\r\nHello World'
         )
       );
       done();
@@ -102,7 +102,7 @@ suite("HAR", () => {
       assert.ok(~json.headers["content-type"].indexOf("multipart/form-data"));
       assert.ok(
         ~json.body.indexOf(
-          "Content-Disposition: form-data; name=\"foo\"; filename=\"unicycle.jpg\"\r\nContent-Type: image/jpeg"
+          'Content-Disposition: form-data; name="foo"; filename="unicycle.jpg"\r\nContent-Type: image/jpeg'
         )
       );
       done();
@@ -118,7 +118,7 @@ suite("HAR", () => {
       assert.deepStrictEqual(error, null);
       assert.ok(~json.headers["content-type"].indexOf("multipart/form-data"));
       assert.ok(
-        ~json.body.indexOf("Content-Disposition: form-data; name=\"foo\"")
+        ~json.body.indexOf('Content-Disposition: form-data; name="foo"')
       );
       done();
     });

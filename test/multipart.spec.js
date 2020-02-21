@@ -8,7 +8,7 @@ suite("Multipart", () => {
   const testHeaders = [
     null,
     "multipart/mixed",
-    "multipart/related; boundary=XXX; type=text/xml; start=\"<root>\""
+    'multipart/related; boundary=XXX; type=text/xml; start="<root>"'
   ];
 
   const methods = ["post", "get"];

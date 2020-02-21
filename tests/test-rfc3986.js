@@ -36,7 +36,7 @@ function runTest(t, options) {
 }
 
 const bodyEscaped = "rfc3986=%21%2A%28%29%27";
-const bodyJson = "{\"rfc3986\":\"!*()'\"}";
+const bodyJson = '{"rfc3986":"!*()\'"}';
 
 const cases = [
   {

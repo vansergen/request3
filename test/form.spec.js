@@ -40,20 +40,20 @@ suite("Form", () => {
 
         // 1st field : my_field
         field = FIELDS.shift();
-        assert.ok(data.indexOf("form-data; name=\"" + field.name + "\"") !== -1);
+        assert.ok(data.indexOf('form-data; name="' + field.name + '"') !== -1);
         assert.ok(data.indexOf(field.value) !== -1);
 
         // 2nd field : my_buffer
         field = FIELDS.shift();
-        assert.ok(data.indexOf("form-data; name=\"" + field.name + "\"") !== -1);
+        assert.ok(data.indexOf('form-data; name="' + field.name + '"') !== -1);
         assert.ok(data.indexOf(field.value) !== -1);
 
         // 3rd field : my_file
         field = FIELDS.shift();
-        assert.ok(data.indexOf("form-data; name=\"" + field.name + "\"") !== -1);
+        assert.ok(data.indexOf('form-data; name="' + field.name + '"') !== -1);
         assert.ok(
           data.indexOf(
-            "; filename=\"" + path.basename(field.value.path) + "\""
+            '; filename="' + path.basename(field.value.path) + '"'
           ) !== -1
         );
         // check for unicycle.jpg traces
@@ -64,10 +64,10 @@ suite("Form", () => {
 
         // 4th field : remote_file
         field = FIELDS.shift();
-        assert.ok(data.indexOf("form-data; name=\"" + field.name + "\"") !== -1);
+        assert.ok(data.indexOf('form-data; name="' + field.name + '"') !== -1);
         assert.ok(
           data.indexOf(
-            "; filename=\"" + path.basename(field.value.path) + "\""
+            '; filename="' + path.basename(field.value.path) + '"'
           ) !== -1
         );
         // check for http://localhost:nnnn/file traces

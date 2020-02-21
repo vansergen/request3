@@ -702,7 +702,7 @@ class Request extends Stream {
       // Invalid URI: it may generate lot of bad errors, like 'TypeError: Cannot call method `indexOf` of undefined' in CookieJar
       // Detect and reject it as soon as possible
       const faultyUri = format(this.uri);
-      let message = "Invalid URI \"" + faultyUri + "\"";
+      let message = 'Invalid URI "' + faultyUri + '"';
       if (Object.keys(options).length === 0) {
         // No option ? This can be the sign of a redirect
         // As this is a case where the user cannot do anything (they didn't call request directly with this URL)

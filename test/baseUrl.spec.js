@@ -119,7 +119,7 @@ suite("baseUrl", () => {
     ];
 
     tests.forEach(([base, uri, expected]) => {
-      test("\"" + "server.url" + base + "\" uri=\"" + uri + "\"", done => {
+      test('"' + "server.url" + base + '" uri="' + uri + '"', done => {
         const baseUrl = server.url + base;
         request(uri, { baseUrl }, (error, response, body) => {
           assert.deepStrictEqual(error, null);

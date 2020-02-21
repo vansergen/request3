@@ -87,7 +87,7 @@ function addTests() {
 
   if (process.env.TEST_PROXY_HARNESS) {
     runTest(
-      "should fail with \"proxy response should not be called\"",
+      'should fail with "proxy response should not be called"',
       {
         proxy: s.url
       },
@@ -95,7 +95,7 @@ function addTests() {
     );
 
     runTest(
-      "should fail with \"proxy response should be called\"",
+      'should fail with "proxy response should be called"',
       {
         proxy: null
       },

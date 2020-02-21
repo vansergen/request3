@@ -32,7 +32,7 @@ suite("FormData", () => {
           if (options.auth) {
             if (!req.headers.authorization) {
               res.writeHead(401, {
-                "www-authenticate": "Basic realm=\"Private\""
+                "www-authenticate": 'Basic realm="Private"'
               });
               res.end();
               return;
@@ -60,20 +60,20 @@ suite("FormData", () => {
             // check for the fields' traces
 
             // 1st field : my_field
-            assert.ok(data.indexOf("form-data; name=\"my_field\"") !== -1);
+            assert.ok(data.indexOf('form-data; name="my_field"') !== -1);
             assert.ok(data.indexOf(multipartFormData.my_field) !== -1);
 
             // 2nd field : my_buffer
-            assert.ok(data.indexOf("form-data; name=\"my_buffer\"") !== -1);
+            assert.ok(data.indexOf('form-data; name="my_buffer"') !== -1);
             assert.ok(data.indexOf(multipartFormData.my_buffer) !== -1);
 
             // 3rd field : my_file
-            assert.ok(data.indexOf("form-data; name=\"my_file\"") !== -1);
+            assert.ok(data.indexOf('form-data; name="my_file"') !== -1);
             assert.ok(
               data.indexOf(
-                "; filename=\"" +
+                '; filename="' +
                   path.basename(multipartFormData.my_file.path) +
-                  "\""
+                  '"'
               ) !== -1
             );
             // check for unicycle.jpg traces
@@ -85,26 +85,26 @@ suite("FormData", () => {
             );
 
             // 4th field : remote_file
-            assert.ok(data.indexOf("form-data; name=\"remote_file\"") !== -1);
+            assert.ok(data.indexOf('form-data; name="remote_file"') !== -1);
             assert.ok(
               data.indexOf(
-                "; filename=\"" +
+                '; filename="' +
                   path.basename(multipartFormData.remote_file.path) +
-                  "\""
+                  '"'
               ) !== -1
             );
 
             // 5th field : file with metadata
-            assert.ok(data.indexOf("form-data; name=\"secret_file\"") !== -1);
+            assert.ok(data.indexOf('form-data; name="secret_file"') !== -1);
             assert.ok(
               data.indexOf(
-                "Content-Disposition: form-data; name=\"secret_file\"; filename=\"topsecret.jpg\""
+                'Content-Disposition: form-data; name="secret_file"; filename="topsecret.jpg"'
               ) !== -1
             );
             assert.ok(data.indexOf("Content-Type: image/custom") !== -1);
 
             // 6th field : batch of files
-            assert.ok(data.indexOf("form-data; name=\"batch\"") !== -1);
+            assert.ok(data.indexOf('form-data; name="batch"') !== -1);
             assert.ok(data.match(/form-data; name="batch"/g).length === 2);
 
             // check for http://localhost:nnnn/file traces

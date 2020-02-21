@@ -36,7 +36,7 @@ server.on("request", (request, response) => {
   } else {
     // No auth header, send back WWW-Authenticate header
     ok = false;
-    response.setHeader("www-authenticate", "Basic realm=\"Private\"");
+    response.setHeader("www-authenticate", 'Basic realm="Private"');
   }
 
   if (request.url === "/post/") {

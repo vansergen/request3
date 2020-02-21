@@ -149,7 +149,7 @@ tape("upper-case Host header and redirect", t => {
     t.ok(
       new RegExp("^Host: " + host + "$", "m").test(rawData),
       util.format(
-        "Expected \"Host: %s\" in data \"%s\"",
+        'Expected "Host: %s" in data "%s"',
         host,
         rawData.trim().replace(/\r?\n/g, "\\n")
       )
@@ -274,7 +274,7 @@ tape(
 const isExpectedHeaderCharacterError = (headerName, err) => {
   return (
     err.message === "The header content contains invalid characters" ||
-    err.message === "Invalid character in header content [\"" + headerName + "\"]"
+    err.message === 'Invalid character in header content ["' + headerName + '"]'
   );
 };
 
@@ -340,7 +340,7 @@ if (hasIPv6interface) {
       t.ok(
         new RegExp("^Host: " + host + "$", "im").test(rawData),
         util.format(
-          "Expected \"Host: %s\" in data \"%s\"",
+          'Expected "Host: %s" in data "%s"',
           host,
           rawData.trim().replace(/\r?\n/g, "\\n")
         )
