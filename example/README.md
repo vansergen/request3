@@ -19,8 +19,8 @@ request.post(
       session_handle: "..."
     }
   },
-  function(err, res, body) {
-    var result = require("querystring").parse(body);
+  (err, res, body) => {
+    const result = require("querystring").parse(body);
     // assert.equal(typeof result, 'object')
   }
 );
@@ -42,7 +42,7 @@ request.post(
     },
     json: true
   },
-  function(err, res, body) {
+  (err, res, body) => {
     // assert.equal(typeof body, 'object')
   }
 );
@@ -81,7 +81,7 @@ request.post(
     },
     json: true
   },
-  function(err, res, body) {
+  (err, res, body) => {
     // assert.equal(typeof body, 'object')
   }
 );
@@ -102,16 +102,16 @@ READABLE.pipe(request.post(URL));
 A more detailed example:
 
 ```js
-var fs = require("fs"),
-  path = require("path"),
-  http = require("http"),
-  request = require("request"),
-  TMP_FILE_PATH = path.join(path.sep, "tmp", "foo");
+const fs = require("fs");
+const path = require("path");
+const http = require("http");
+const request = require("request");
+const TMP_FILE_PATH = path.join(path.sep, "tmp", "foo");
 // write a temporary file:
 fs.writeFileSync(TMP_FILE_PATH, "foo bar baz quk\n");
 
 http
-  .createServer(function(req, res) {
+  .createServer((req, res) => {
     console.log("the server is receiving data!\n");
     req.on("end", res.end.bind(res)).pipe(process.stdout);
   })
@@ -126,8 +126,8 @@ fs.createReadStream(TMP_FILE_PATH).pipe(request.post("http://127.0.0.1:3000"));
 Run tor on the terminal and try the following. (Needs `socks5-http-client` to connect to tor)
 
 ```js
-var request = require("../index.js");
-var Agent = require("socks5-http-client/lib/Agent");
+const request = require("../index.js");
+const Agent = require("socks5-http-client/lib/Agent");
 
 request.get(
   {
@@ -138,7 +138,7 @@ request.get(
       socksPort: 9050 // Defaults to 1080.
     }
   },
-  function(err, res) {
+  (err, res) => {
     console.log(res.body);
   }
 );
