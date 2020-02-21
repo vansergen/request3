@@ -22,8 +22,8 @@ const server = require("net").createServer(socket => {
     });
   });
 });
-server.on("listening", function() {
-  server.url = "http://localhost:" + this.address().port;
+server.on("listening", () => {
+  server.url = "http://localhost:" + server.address().port;
 });
 
 suite("Proxy connect", () => {

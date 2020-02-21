@@ -183,18 +183,18 @@ suite("gzip", () => {
     const chunks = [];
     let paused = false;
     const options = { url: server.url + "/chunks", gzip: true };
-    request
+    const req = request
       .get(options)
-      .on("data", function(chunk) {
+      .on("data", chunk => {
         assert.ok(!paused, "Only receive data when not paused");
 
         chunks.push(chunk);
         if (chunks.length === 1) {
-          this.pause();
+          req.pause();
           paused = true;
           setTimeout(() => {
             paused = false;
-            this.resume();
+            req.resume();
           }, 1);
         }
       })

@@ -161,7 +161,7 @@ suite("Digest auth", () => {
   test("with sendImmediately = false", done => {
     let numRedirects = 0;
 
-    request(
+    const req = request(
       {
         method: "GET",
         uri: server.url + "/test/",
@@ -174,8 +174,8 @@ suite("Digest auth", () => {
         assert.deepStrictEqual(numRedirects, 1);
         done();
       }
-    ).on("redirect", function() {
-      assert.deepStrictEqual(this.response.statusCode, 401);
+    ).on("redirect", () => {
+      assert.deepStrictEqual(req.response.statusCode, 401);
       numRedirects++;
     });
   });
@@ -183,7 +183,7 @@ suite("Digest auth", () => {
   test("with MD5-sess algorithm", done => {
     let numRedirects = 0;
 
-    request(
+    const req = request(
       {
         method: "GET",
         uri: server.url + "/test/md5-sess",
@@ -196,8 +196,8 @@ suite("Digest auth", () => {
         assert.deepStrictEqual(numRedirects, 1);
         done();
       }
-    ).on("redirect", function() {
-      assert.deepStrictEqual(this.response.statusCode, 401);
+    ).on("redirect", () => {
+      assert.deepStrictEqual(req.response.statusCode, 401);
       numRedirects++;
     });
   });
@@ -219,8 +219,8 @@ suite("Digest auth", () => {
         assert.deepStrictEqual(numRedirects, 0);
         done();
       }
-    ).on("redirect", function() {
-      assert.deepStrictEqual(this.response.statusCode, 401);
+    ).on("redirect", () => {
+      assert.deepStrictEqual(request.response.statusCode, 401);
       numRedirects++;
     });
   });
@@ -228,7 +228,7 @@ suite("Digest auth", () => {
   test("with different credentials", done => {
     let numRedirects = 0;
 
-    request(
+    const req = request(
       {
         method: "GET",
         uri: server.url + "/dir/index.html",
@@ -241,8 +241,8 @@ suite("Digest auth", () => {
         assert.deepStrictEqual(numRedirects, 1);
         done();
       }
-    ).on("redirect", function() {
-      assert.deepStrictEqual(this.response.statusCode, 401);
+    ).on("redirect", () => {
+      assert.deepStrictEqual(req.response.statusCode, 401);
       numRedirects++;
     });
   });

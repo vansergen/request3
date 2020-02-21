@@ -393,7 +393,7 @@ suite("Redirect", () => {
 
   test("should have referer header by default when following redirect", done => {
     const uri = server.url + "/temp";
-    request
+    const req = request
       .post(
         { uri, jar, followAllRedirects: true, headers: { cookie: "foo=bar" } },
         (error, response) => {
@@ -402,8 +402,8 @@ suite("Redirect", () => {
           done();
         }
       )
-      .on("redirect", function() {
-        assert.deepStrictEqual(this.headers.referer, server.url + "/temp");
+      .on("redirect", () => {
+        assert.deepStrictEqual(req.headers.referer, server.url + "/temp");
       });
   });
 
@@ -412,7 +412,7 @@ suite("Redirect", () => {
     const followAllRedirects = true;
     const removeRefererHeader = true;
     const headers = { cookie: "foo=bar" };
-    request
+    const req = request
       .post(
         { uri, jar, followAllRedirects, removeRefererHeader, headers },
         (error, response) => {
@@ -421,8 +421,8 @@ suite("Redirect", () => {
           done();
         }
       )
-      .on("redirect", function() {
-        assert.deepStrictEqual(this.headers.referer, undefined);
+      .on("redirect", () => {
+        assert.deepStrictEqual(req.headers.referer, undefined);
       });
   });
 
@@ -431,7 +431,7 @@ suite("Redirect", () => {
     const followAllRedirects = true;
     const removeRefererHeader = true;
     const headers = { cookie: "foo=bar", referer: "http://awesome.com" };
-    request
+    const req = request
       .post(
         { uri, jar, followAllRedirects, removeRefererHeader, headers },
         (error, response) => {
@@ -440,8 +440,8 @@ suite("Redirect", () => {
           done();
         }
       )
-      .on("redirect", function() {
-        assert.deepStrictEqual(this.headers.referer, "http://awesome.com");
+      .on("redirect", () => {
+        assert.deepStrictEqual(req.headers.referer, "http://awesome.com");
       });
   });
 
@@ -453,35 +453,36 @@ suite("Redirect", () => {
     hits = {};
     const uri = server.url + "/temp";
     const headers = { cookie: "foo=bar" };
-    const agentClass = function FakeAgent(agentOptions) {
-      agent = new Agent(agentOptions);
-      const { createConnection } = agent;
-      agent.createConnection = function() {
-        calls++;
-        return createConnection.apply(agent, arguments);
-      };
-      return agent;
-    };
-    request.get({ uri, jar, headers, agentOptions, agentClass }, function(
-      error,
-      response,
-      body
-    ) {
-      assert.deepStrictEqual(error, null);
-      assert.deepStrictEqual(response.statusCode, 200);
-      assert.deepStrictEqual(
-        body,
-        "GET temp_landing",
-        "Got temporary landing content"
-      );
-      assert.deepStrictEqual(calls, 2);
-      assert.ok(
-        this.agent === agent,
-        "Reinstantiated the user-specified agent"
-      );
-      assert.ok(this.agentOptions === agentOptions, "Reused agent options");
-      done();
-    });
+    class FakeAgent extends Agent {
+      constructor(agentOptions) {
+        super(agentOptions);
+        agent = this;
+        const { createConnection } = agent;
+        this.createConnection = (...args) => {
+          calls++;
+          return createConnection.apply(agent, args);
+        };
+      }
+    }
+    const req = request.get(
+      { uri, jar, headers, agentOptions, agentClass: FakeAgent },
+      (error, response, body) => {
+        assert.deepStrictEqual(error, null);
+        assert.deepStrictEqual(response.statusCode, 200);
+        assert.deepStrictEqual(
+          body,
+          "GET temp_landing",
+          "Got temporary landing content"
+        );
+        assert.deepStrictEqual(calls, 2);
+        assert.ok(
+          req.agent === agent,
+          "Reinstantiated the user-specified agent"
+        );
+        assert.ok(req.agentOptions === agentOptions, "Reused agent options");
+        done();
+      }
+    );
   });
 
   suiteTeardown(done =>

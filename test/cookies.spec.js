@@ -17,8 +17,8 @@ let validUrl;
 let malformedUrl;
 let invalidUrl;
 
-server.on("listening", function() {
-  const url = "http://localhost:" + this.address().port;
+server.on("listening", () => {
+  const url = "http://localhost:" + server.address().port;
   validUrl = url + "/valid";
   malformedUrl = url + "/malformed";
   invalidUrl = url + "/invalid";
@@ -105,7 +105,7 @@ suite("Cookies", () => {
   });
 
   test("custom store", done => {
-    const Store = function() {};
+    class Store {}
     const store = new Store();
     const jar = request.jar(store);
     assert.deepStrictEqual(store, jar._jar.store);

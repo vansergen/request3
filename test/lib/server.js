@@ -10,8 +10,8 @@ class Server {
     const server = http.createServer((request, response) => {
       server.emit(request.url.replace(/(\?.*)/, ""), request, response);
     });
-    server.on("listening", function() {
-      server.port = this.address().port;
+    server.on("listening", () => {
+      server.port = server.address().port;
       server.url = "http://localhost:" + server.port;
     });
     server.port = 0;
@@ -38,8 +38,8 @@ class Server {
         response.end();
       });
     });
-    server.on("listening", function() {
-      server.port = this.address().port;
+    server.on("listening", () => {
+      server.port = server.address().port;
       server.url = "http://localhost:" + server.port;
     });
     server.port = 0;
@@ -71,8 +71,8 @@ class Server {
     const server = https.createServer(options, (request, response) => {
       server.emit(request.url, request, response);
     });
-    server.on("listening", function() {
-      server.port = this.address().port;
+    server.on("listening", () => {
+      server.port = server.address().port;
       server.url = "https://localhost:" + server.port;
     });
     server.port = 0;
@@ -94,9 +94,7 @@ class Server {
   static createPostValidator(text, reqContentType) {
     return (request, response) => {
       let r = "";
-      request.on("data", chunk => {
-        r += chunk;
-      });
+      request.on("data", chunk => (r += chunk));
       request.on("end", () => {
         if (
           request.headers["content-type"] &&
@@ -122,9 +120,7 @@ class Server {
   static createPostJSONValidator(value, reqContentType) {
     return (request, response) => {
       let r = "";
-      request.on("data", chunk => {
-        r += chunk;
-      });
+      request.on("data", chunk => (r += chunk));
       request.on("end", () => {
         const parsedValue = JSON.parse(r);
         assert.deepStrictEqual(parsedValue, value);
@@ -152,9 +148,7 @@ class Server {
     return (request, response) => {
       contentType = contentType || "text/plain";
       response.writeHead(200, { "content-type": contentType });
-      chunks.forEach(chunk => {
-        response.write(chunk);
-      });
+      chunks.forEach(chunk => response.write(chunk));
       response.end();
     };
   }
