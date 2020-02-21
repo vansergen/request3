@@ -68,6 +68,7 @@
     "karma-cli": "^2.0.0",
     "karma-coverage": "^2.0.1",
     "karma-tap": "^4.1.4",
+    "mocha": "^7.0.1",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "puppeteer": "^2.0.0",
