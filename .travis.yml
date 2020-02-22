@@ -7,4 +7,5 @@ node_js:
 script:
   - npm run prettier
   - npm run lint
+  - npm test
   - npm run test-browser
