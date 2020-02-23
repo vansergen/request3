@@ -49,8 +49,8 @@ class Server {
 
   static createSSLServer(opts) {
     const options = {
-      key: path.join(__dirname, "ssl", "test.key"),
-      cert: path.join(__dirname, "ssl", "test.crt")
+      key: path.join(__dirname, "/../ssl", "test.key"),
+      cert: path.join(__dirname, "/../ssl", "test.crt")
     };
     if (opts) {
       for (let i in opts) {
