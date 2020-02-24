@@ -1,21 +1,14 @@
-# Request - Simplified HTTP client
+# Request3 - Simplified HTTP client [![Build Status](https://travis-ci.com/vansergen/request3.svg?branch=master)](https://travis-ci.com/vansergen/request3) [![Coverage Status](https://coveralls.io/repos/github/vansergen/request3/badge.svg?branch=master)](https://coveralls.io/github/vansergen/request3?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/vansergen/request3/badge.svg)](https://snyk.io/test/github/vansergen/request3) [![GitHub version](https://badge.fury.io/gh/vansergen%2Frequest3.svg)](https://github.com/vansergen/request3) [![Greenkeeper badge](https://badges.greenkeeper.io/vansergen/request3.svg)](https://greenkeeper.io/) ![node](https://img.shields.io/node/v/request3) ![NPM](https://img.shields.io/npm/l/request3) ![GitHub top language](https://img.shields.io/github/languages/top/vansergen/request3)
 
-[![npm package](https://nodei.co/npm/request.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/request/)
-
-[![Build status](https://img.shields.io/travis/request/request/master.svg?style=flat-square)](https://travis-ci.org/request/request)
-[![Coverage](https://img.shields.io/codecov/c/github/request/request.svg?style=flat-square)](https://codecov.io/github/request/request?branch=master)
-[![Coverage](https://img.shields.io/coveralls/request/request.svg?style=flat-square)](https://coveralls.io/r/request/request)
-[![Dependency Status](https://img.shields.io/david/request/request.svg?style=flat-square)](https://david-dm.org/request/request)
-[![Known Vulnerabilities](https://snyk.io/test/npm/request/badge.svg?style=flat-square)](https://snyk.io/test/npm/request)
-[![Gitter](https://img.shields.io/badge/gitter-join_chat-blue.svg?style=flat-square)](https://gitter.im/request/request?utm_source=badge)
+[![npm package](https://nodei.co/npm/request3.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/request3/)
 
 ## Super simple to use
 
-Request is designed to be the simplest way possible to make http calls. It supports HTTPS and follows redirects by default.
+`request3` is designed to be the simplest way possible to make http calls (forked from [request](https://github.com/request/request)). It supports HTTPS and follows redirects by default.
 
 ```js
-const request = require("request");
-request("http://www.google.com", function(error, response, body) {
+const request = require("request3");
+request("http://www.google.com", (error, response, body) => {
   console.error("error:", error); // Print the error if one occurred
   console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
   console.log("body:", body); // Print the HTML for the Google homepage.
@@ -25,7 +18,6 @@ request("http://www.google.com", function(error, response, body) {
 ## Table of contents
 
 - [Streaming](#streaming)
-- [Promises & Async/Await](#promises--asyncawait)
 - [Forms](#forms)
 - [HTTP Authentication](#http-authentication)
 - [Custom HTTP Headers](#custom-http-headers)
@@ -74,7 +66,7 @@ Request emits a "response" event when a response is received. The `response` arg
 ```js
 request
   .get("http://google.com/img.png")
-  .on("response", function(response) {
+  .on("response", response => {
     console.log(response.statusCode); // 200
     console.log(response.headers["content-type"]); // 'image/png'
   })
@@ -86,16 +78,14 @@ To easily handle errors when streaming requests, listen to the `error` event bef
 ```js
 request
   .get("http://mysite.com/doodle.png")
-  .on("error", function(err) {
-    console.error(err);
-  })
+  .on("error", err => console.error(err))
   .pipe(fs.createWriteStream("doodle.png"));
 ```
 
 Now let’s get fancy.
 
 ```js
-http.createServer(function(req, resp) {
+http.createServer((req, resp) => {
   if (req.url === "/doodle.png") {
     if (req.method === "PUT") {
       req.pipe(request.put("http://mysite.com/doodle.png"));
@@ -109,7 +99,7 @@ http.createServer(function(req, resp) {
 You can also `pipe()` from `http.ServerRequest` instances, as well as to `http.ServerResponse` instances. The HTTP method, headers, and entity-body data will be sent. Which means that, if you don't really care about security, you can do:
 
 ```js
-http.createServer(function(req, resp) {
+http.createServer((req, resp) => {
   if (req.url === "/doodle.png") {
     const x = request("http://mysite.com/doodle.png");
     req.pipe(x);
@@ -129,7 +119,7 @@ Also, none of this new functionality conflicts with requests previous features, 
 ```js
 const r = request.defaults({ proxy: "http://localproxy.com" });
 
-http.createServer(function(req, resp) {
+http.createServer((req, resp) => {
   if (req.url === "/doodle.png") {
     r.get("http://google.com/doodle.png").pipe(resp);
   }
@@ -137,22 +127,6 @@ http.createServer(function(req, resp) {
 ```
 
 You can still use intermediate proxies, the requests will still follow HTTP forwards, etc.
-
-[back to top](#table-of-contents)
-
----
-
-## Promises & Async/Await
-
-`request` supports both streaming and callback interfaces natively. If you'd like `request` to return a Promise instead, you can use an alternative interface wrapper for `request`. These wrappers can be useful if you prefer to work with Promises, or if you'd like to use `async`/`await` in ES2017.
-
-Several alternative interfaces are provided by the request team, including:
-
-- [`request-promise`](https://github.com/request/request-promise) (uses [Bluebird](https://github.com/petkaantonov/bluebird) Promises)
-- [`request-promise-native`](https://github.com/request/request-promise-native) (uses native Promises)
-- [`request-promise-any`](https://github.com/request/request-promise-any) (uses [any-promise](https://www.npmjs.com/package/any-promise) Promises)
-
-Also, [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original), which is available from Node.js v8.0 can be used to convert a regular function that takes a callback to return a promise instead.
 
 [back to top](#table-of-contents)
 
@@ -173,7 +147,7 @@ request.post("http://service.com/upload").form({ key: "value" });
 // or
 request.post(
   { url: "http://service.com/upload", form: { key: "value" } },
-  function(err, httpResponse, body) {
+  (err, httpResponse, body) => {
     /* ... */
   }
 );
@@ -208,8 +182,8 @@ const formData = {
   }
 };
 request.post(
-  { url: "http://service.com/upload", formData: formData },
-  function optionalCallback(err, httpResponse, body) {
+  { url: "http://service.com/upload", formData },
+  (err, httpResponse, body) => {
     if (err) {
       return console.error("upload failed:", err);
     }
@@ -222,11 +196,15 @@ For advanced cases, you can access the form-data object itself via `r.form()`. T
 
 ```js
 // NOTE: Advanced use-case, for normal use see 'formData' usage above
-const r = request.post('http://service.com/upload', function optionalCallback(err, httpResponse, body) {...})
+const r = request.post("http://service.com/upload", (err, httpResponse, body) =>
+  console.log(body)
+);
 const form = r.form();
-form.append('my_field', 'my_value');
-form.append('my_buffer', Buffer.from([1, 2, 3]));
-form.append('custom_file', fs.createReadStream(__dirname + '/unicycle.jpg'), {filename: 'unicycle.jpg'});
+form.append("my_field", "my_value");
+form.append("my_buffer", Buffer.from([1, 2, 3]));
+form.append("custom_file", fs.createReadStream(__dirname + "/unicycle.jpg"), {
+  filename: "unicycle.jpg"
+});
 ```
 
 See the [form-data README](https://github.com/form-data/form-data) for more information & examples.
@@ -280,7 +258,7 @@ request(
       ]
     }
   },
-  function(error, response, body) {
+  (error, response, body) => {
     if (error) {
       return console.error("upload failed:", error);
     }
@@ -336,11 +314,11 @@ detailed in [RFC 1738](http://www.ietf.org/rfc/rfc1738.txt). Simply pass the
 `user:password` before the host with an `@` sign:
 
 ```js
-const username = "username",
-  password = "password",
-  url = "http://" + username + ":" + password + "@some.server.com";
+const username = "username";
+const password = "password";
+const url = "http://" + username + ":" + password + "@some.server.com";
 
-request({ url }, function(error, response, body) {
+request({ url }, (error, response, body) => {
   // Do more stuff with 'body' here
 });
 ```
@@ -367,24 +345,22 @@ of stars and forks for the request repository. This requires a
 custom `User-Agent` header as well as https.
 
 ```js
-const request = require("request");
+const request = require("request3");
 
 const options = {
-  url: "https://api.github.com/repos/request/request",
-  headers: {
-    "User-Agent": "request"
-  }
+  url: "https://api.github.com/repos/vansergen/request",
+  headers: { "User-Agent": "request" }
 };
 
-function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
+request(options, (error, response, body) => {
+  if (error) {
+    return console.error(error);
+  } else if (!error && response.statusCode == 200) {
     const info = JSON.parse(body);
     console.log(info.stargazers_count + " Stars");
     console.log(info.forks_count + " Forks");
   }
-}
-
-request(options, callback);
+});
 ```
 
 [back to top](#table-of-contents)
@@ -400,14 +376,14 @@ default signing algorithm is
 ```js
 // OAuth1.0 - 3-legged server side flow (Twitter example)
 // step 1
-const qs = require("querystring"),
-  oauth = {
-    callback: "http://mysite.com/callback/",
-    consumer_key: CONSUMER_KEY,
-    consumer_secret: CONSUMER_SECRET
-  },
-  url = "https://api.twitter.com/oauth/request_token";
-request.post({ url: url, oauth: oauth }, function(e, r, body) {
+const qs = require("querystring");
+const oauth = {
+  callback: "http://mysite.com/callback/",
+  consumer_key: CONSUMER_KEY,
+  consumer_secret: CONSUMER_SECRET
+};
+const url = "https://api.twitter.com/oauth/request_token";
+request.post({ url, oauth }, (e, r, body) => {
   // Ideally, you would take the body in the response
   // and construct a URL that a user clicks on (like a sign in button).
   // The verifier is only available in the response after a user has
@@ -423,33 +399,32 @@ request.post({ url: url, oauth: oauth }, function(e, r, body) {
 
   // step 3
   // after the user is redirected back to your server
-  const auth_data = qs.parse(body),
-    oauth = {
+  const auth_data = qs.parse(body);
+  const oauth = {
+    consumer_key: CONSUMER_KEY,
+    consumer_secret: CONSUMER_SECRET,
+    token: auth_data.oauth_token,
+    token_secret: req_data.oauth_token_secret,
+    verifier: auth_data.oauth_verifier
+  };
+  const url = "https://api.twitter.com/oauth/access_token";
+  request.post({ url, oauth }, (e, r, body) => {
+    // ready to make signed requests on behalf of the user
+    const perm_data = qs.parse(body);
+    const oauth = {
       consumer_key: CONSUMER_KEY,
       consumer_secret: CONSUMER_SECRET,
-      token: auth_data.oauth_token,
-      token_secret: req_data.oauth_token_secret,
-      verifier: auth_data.oauth_verifier
-    },
-    url = "https://api.twitter.com/oauth/access_token";
-  request.post({ url: url, oauth: oauth }, function(e, r, body) {
-    // ready to make signed requests on behalf of the user
-    const perm_data = qs.parse(body),
-      oauth = {
-        consumer_key: CONSUMER_KEY,
-        consumer_secret: CONSUMER_SECRET,
-        token: perm_data.oauth_token,
-        token_secret: perm_data.oauth_token_secret
-      },
-      url = "https://api.twitter.com/1.1/users/show.json",
-      qs = { screen_name: perm_data.screen_name, user_id: perm_data.user_id };
-    request.get({ url: url, oauth: oauth, qs: qs, json: true }, function(
-      e,
-      r,
-      user
-    ) {
-      console.log(user);
-    });
+      token: perm_data.oauth_token,
+      token_secret: perm_data.oauth_token_secret
+    };
+    const url = "https://api.twitter.com/1.1/users/show.json";
+    const qs = {
+      screen_name: perm_data.screen_name,
+      user_id: perm_data.user_id
+    };
+    request.get({ url, oauth, qs, json: true }, (e, r, user) =>
+      console.log(user)
+    );
   });
 });
 ```
@@ -622,12 +597,12 @@ TLS/SSL Protocol options, such as `cert`, `key` and `passphrase`, can be
 set directly in `options` object, in the `agentOptions` property of the `options` object, or even in `https.globalAgent.options`. Keep in mind that, although `agentOptions` allows for a slightly wider range of configurations, the recommended way is via `options` object directly, as using `agentOptions` or `https.globalAgent.options` would not be applied in the same way in proxied environments (as data travels through a TLS connection instead of an http/https agent).
 
 ```js
-const fs = require("fs"),
-  path = require("path"),
-  certFile = path.resolve(__dirname, "ssl/client.crt"),
-  keyFile = path.resolve(__dirname, "ssl/client.key"),
-  caFile = path.resolve(__dirname, "ssl/ca.cert.pem"),
-  request = require("request");
+const fs = require("fs");
+const path = require("path");
+const  certFile = path.resolve(__dirname, "ssl/client.crt"),
+const  keyFile = path.resolve(__dirname, "ssl/client.key");
+const  caFile = path.resolve(__dirname, "ssl/ca.cert.pem");
+const  request = require("request3");
 
 const options = {
   url: "https://api.some-server.com/",
@@ -646,11 +621,11 @@ In the example below, we call an API that requires client side SSL certificate
 (in PEM format) with passphrase protected private key (in PEM format) and disable the SSLv3 protocol:
 
 ```js
-const fs = require("fs"),
-  path = require("path"),
-  certFile = path.resolve(__dirname, "ssl/client.crt"),
-  keyFile = path.resolve(__dirname, "ssl/client.key"),
-  request = require("request");
+const fs = require("fs");
+const path = require("path");
+const certFile = path.resolve(__dirname, "ssl/client.crt");
+const keyFile = path.resolve(__dirname, "ssl/client.key");
+const request = require("request3");
 
 const options = {
   url: "https://api.some-server.com/",
@@ -672,9 +647,7 @@ It is able to force using SSLv3 only by specifying `secureProtocol`:
 ```js
 request.get({
   url: "https://api.some-server.com/",
-  agentOptions: {
-    secureProtocol: "SSLv3_method"
-  }
+  agentOptions: { secureProtocol: "SSLv3_method" }
 });
 ```
 
@@ -686,9 +659,7 @@ The certificate the domain presents must be signed by the root certificate speci
 ```js
 request.get({
   url: "https://api.some-server.com/",
-  agentOptions: {
-    ca: fs.readFileSync("ca.cert.pem")
-  }
+  agentOptions: { ca: fs.readFileSync("ca.cert.pem") }
 });
 ```
 
@@ -723,7 +694,7 @@ The `options.har` property will override the values: `url`, `method`, `qs`, `hea
 A validation step will check if the HAR Request format matches the latest spec (v1.2) and will skip parsing if not matching.
 
 ```js
-const request = require("request");
+const request = require("request3");
 request({
   // will be ignored
   method: "GET",
@@ -734,22 +705,13 @@ request({
     url: "http://www.mockbin.com/har",
     method: "POST",
     headers: [
-      {
-        name: "content-type",
-        value: "application/x-www-form-urlencoded"
-      }
+      { name: "content-type", value: "application/x-www-form-urlencoded" }
     ],
     postData: {
       mimeType: "application/x-www-form-urlencoded",
       params: [
-        {
-          name: "foo",
-          value: "bar"
-        },
-        {
-          name: "hello",
-          value: "world"
-        }
+        { name: "foo", value: "bar" },
+        { name: "hello", value: "world" }
       ]
     }
   }
@@ -829,7 +791,7 @@ The first argument can be either a `url` or an `options` object. The only requir
 - `agent` - `http(s).Agent` instance to use
 - `agentClass` - alternatively specify your agent's class name
 - `agentOptions` - and pass its options. **Note:** for HTTPS see [tls API doc for TLS/SSL options](http://nodejs.org/api/tls.html#tls_tls_connect_options_callback) and the [documentation above](#using-optionsagentoptions).
-- `forever` - set to `true` to use the [forever-agent](https://github.com/request/forever-agent) **Note:** Defaults to `http(s).Agent({keepAlive:true})` in node 0.12+
+- `forever` - set to `true` to use `http(s).Agent({keepAlive:true})`.
 - `pool` - an object describing which agents to use for the request. If this option is omitted the request will use the global agent (as long as your options allow for it). Otherwise, request will search the pool for your custom agent. If no custom agent is found, a new agent will be created and added to the pool. **Note:** `pool` is used only when the `agent` option is not specified.
   - A `maxSockets` property can also be provided on the `pool` object to set the max number of sockets for all agents created (ex: `pool: {maxSockets: Infinity}`).
   - Note that if you are sending multiple requests in a loop and creating
@@ -913,9 +875,7 @@ For example:
 
 ```js
 //requests using baseRequest() will set the 'x-token' header
-const baseRequest = request.defaults({
-  headers: { "x-token": "my-token" }
-});
+const baseRequest = request.defaults({ headers: { "x-token": "my-token" } });
 
 //requests using specialRequest() will include the 'x-token' header set in
 //baseRequest and will also include the 'special' header
@@ -957,7 +917,7 @@ request.jar();
 Function that returns the specified response header field using a [case-insensitive match](https://tools.ietf.org/html/rfc7230#section-3.2)
 
 ```js
-request("http://www.google.com", function(error, response, body) {
+request("http://www.google.com", (error, response, body) => {
   // print the Content-Type header even if the server returned it as 'content-type' (lowercase)
   console.log("Content-Type is:", response.caseless.get("Content-Type"));
 });
@@ -1003,7 +963,7 @@ can detect whether the timeout was a connection timeout by checking if the
 `err.connect` property is set to `true`.
 
 ```js
-request.get("http://10.255.255.1", { timeout: 1500 }, function(err) {
+request.get("http://10.255.255.1", { timeout: 1500 }, err => {
   console.log(err.code === "ETIMEDOUT");
   // Set to `true` if the timeout was a connection timeout, `false` or
   // `undefined` otherwise.
@@ -1017,8 +977,8 @@ request.get("http://10.255.255.1", { timeout: 1500 }, function(err) {
 ## Examples:
 
 ```js
-const request = require("request"),
-  rand = Math.floor(Math.random() * 100000000).toString();
+const request = require("request3");
+const rand = Math.floor(Math.random() * 100000000).toString();
 request(
   {
     method: "PUT",
@@ -1040,7 +1000,7 @@ request(
       { body: "I am an attachment" }
     ]
   },
-  function(error, response, body) {
+  (error, response, body) => {
     if (response.statusCode == 201) {
       console.log(
         "document saved as: http://mikeal.iriscouch.com/testjs/" + rand
@@ -1060,29 +1020,24 @@ while the response object is unmodified and will contain compressed data if
 the server sent a compressed response.
 
 ```js
-const request = require("request");
-request({ method: "GET", uri: "http://www.google.com", gzip: true }, function(
-  error,
-  response,
-  body
-) {
-  // body is the decompressed response body
-  console.log(
-    "server encoded the data as: " +
-      (response.headers["content-encoding"] || "identity")
-  );
-  console.log("the decoded data is: " + body);
-})
-  .on("data", function(data) {
-    // decompressed data as it is received
-    console.log("decoded chunk: " + data);
-  })
-  .on("response", function(response) {
+const request = require("request3");
+request(
+  { method: "GET", uri: "http://www.google.com", gzip: true },
+  (error, response, body) => {
+    // body is the decompressed response body
+    console.log(
+      "server encoded the data as: " +
+        (response.headers["content-encoding"] || "identity")
+    );
+    console.log("the decoded data is: " + body);
+  }
+)
+  .on("data", data => console.log("decoded chunk: " + data))
+  .on("response", response => {
     // unmodified http.IncomingMessage object
-    response.on("data", function(data) {
-      // compressed data as it is received
-      console.log("received " + data.length + " bytes of compressed data");
-    });
+    response.on("data", data =>
+      console.log("received " + data.length + " bytes of compressed data")
+    );
   });
 ```
 
@@ -1090,31 +1045,25 @@ Cookies are disabled by default (else, they would be used in subsequent requests
 
 ```js
 const request = request.defaults({ jar: true });
-request("http://www.google.com", function() {
-  request("http://images.google.com");
-});
+request("http://www.google.com", () => request("http://images.google.com"));
 ```
 
 To use a custom cookie jar (instead of `request`’s global cookie jar), set `jar` to an instance of `request.jar()` (either in `defaults` or `options`)
 
 ```js
-const j = request.jar();
-const request = request.defaults({ jar: j });
-request("http://www.google.com", function() {
-  request("http://images.google.com");
-});
+const jar = request.jar();
+const request = request.defaults({ jar });
+request("http://www.google.com", () => request("http://images.google.com"));
 ```
 
 OR
 
 ```js
-const j = request.jar();
+const jar = request.jar();
 const cookie = request.cookie("key1=value1");
 const url = "http://www.google.com";
-j.setCookie(cookie, url);
-request({ url: url, jar: j }, function() {
-  request("http://images.google.com");
-});
+jar.setCookie(cookie, url);
+request({ url, jar }, () => request("http://images.google.com"));
 ```
 
 To use a custom cookie store (such as a
@@ -1125,11 +1074,9 @@ to `request.jar()`:
 ```js
 const FileCookieStore = require("tough-cookie-filestore");
 // NOTE - currently the 'cookies.json' file must already exist!
-const j = request.jar(new FileCookieStore("cookies.json"));
-request = request.defaults({ jar: j });
-request("http://www.google.com", function() {
-  request("http://images.google.com");
-});
+const jar = request.jar(new FileCookieStore("cookies.json"));
+request = request.defaults({ jar });
+request("http://www.google.com", () => request("http://images.google.com"));
 ```
 
 The cookie store must be a
@@ -1141,12 +1088,13 @@ for details.
 To inspect your cookie jar after a request:
 
 ```js
-const j = request.jar();
-request({ url: "http://www.google.com", jar: j }, function() {
-  const cookie_string = j.getCookieString(url); // "key1=value1; key2=value2; ..."
-  const cookies = j.getCookies(url);
-  // [{key: 'key1', value: 'value1', domain: "www.google.com", ...}, ...]
+const jar = request.jar();
+request({ url: "http://www.google.com", jar }, () => {
+  const cookie_string = jar.getCookieString(url); // "key1=value1; key2=value2; ..."
+  const cookies = jar.getCookies(url); // [{key: 'key1', value: 'value1', domain: "www.google.com", ...}, ...]
 });
 ```
+
+,
 
 [back to top](#table-of-contents)

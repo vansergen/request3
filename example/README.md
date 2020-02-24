@@ -105,7 +105,7 @@ A more detailed example:
 const fs = require("fs");
 const path = require("path");
 const http = require("http");
-const request = require("request");
+const request = require("request3");
 const TMP_FILE_PATH = path.join(path.sep, "tmp", "foo");
 // write a temporary file:
 fs.writeFileSync(TMP_FILE_PATH, "foo bar baz quk\n");
