@@ -6,7 +6,10 @@ const { Agent } = require("http");
 
 const jar = request.jar();
 let hits = {};
+const connections = [];
 
+server.on("connection", socket => connections.push(socket));
+serverSSL.on("connection", socket => connections.push(socket));
 server.on("/ssl", (request, response) => {
   response.writeHead(302, { location: serverSSL.url + "/" });
   response.end();
@@ -73,6 +76,10 @@ suite("Redirect", () => {
         done();
       });
     })
+  );
+
+  teardown(() =>
+    connections.forEach(socket => socket.destroyed || socket.destroy())
   );
 
   test("permanent bounce", done => {

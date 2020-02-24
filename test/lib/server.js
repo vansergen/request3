@@ -105,7 +105,7 @@ class Server {
           );
           text = text.replace(/__BOUNDARY__/g, boundary);
         }
-        assert.strictEqual(r, text);
+        assert.deepStrictEqual(r, text);
         if (reqContentType) {
           assert.ok(request.headers["content-type"]);
           assert.ok(~request.headers["content-type"].indexOf(reqContentType));

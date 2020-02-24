@@ -5,9 +5,11 @@ const server1 = require("./lib/server").createServer();
 const server2 = require("./lib/server").createServer();
 const emitter = new EventEmitter();
 
+const connections = [];
+
 function bouncy(server, url) {
   const redirs = { a: "b", b: "c", c: "d", d: "e", e: "f", f: "g", g: "end" };
-
+  server.on("connection", socket => connections.push(socket));
   let perm = true;
   Object.keys(redirs).forEach(p => {
     const t = redirs[p];
@@ -40,6 +42,10 @@ suite("Redirect (complex)", () => {
       });
     });
   });
+
+  teardown(() =>
+    connections.forEach(socket => socket.destroyed || socket.destroy())
+  );
 
   test("lots of redirects", done => {
     const n = 10;

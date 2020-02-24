@@ -1,3 +1,5 @@
+delete require.cache[require.resolve("../index")];
+delete require.cache[require.resolve("../request")];
 const { createServer, createSSLServer } = require("./lib/server");
 const assert = require("assert");
 const request = require("../index");

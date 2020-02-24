@@ -9,6 +9,8 @@ const request = require("../index").defaults({
 const s = createServer();
 const ss = createSSLServer();
 
+const connections = [];
+
 // redirect.from(proto, host).to(proto, host) returns an object with keys:
 //   src : source URL
 //   dst : destination URL
@@ -42,6 +44,7 @@ const redirect = {
 const handleRequests = srv => {
   ["http", "https"].forEach(proto => {
     ["localhost", "127.0.0.1"].forEach(host => {
+      srv.on("connection", socket => connections.push(socket));
       srv.on(util.format("/to/%s/%s", proto, host), (req, res) => {
         const r = redirect
           .from(srv.protocol, req.headers.host.split(":")[0])
@@ -68,6 +71,10 @@ suite("Redirect auth", () => {
         done();
       })
     )
+  );
+
+  teardown(() =>
+    connections.forEach(socket => socket.destroyed || socket.destroy())
   );
 
   const cases = [
