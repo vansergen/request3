@@ -1,5 +1,5 @@
 {
-  "name": "request",
+  "name": "request3",
   "description": "Simplified HTTP request client.",
   "keywords": [
     "http",
@@ -7,17 +7,17 @@
     "util",
     "utility"
   ],
-  "version": "2.88.1",
+  "version": "1.0.0",
   "author": "Mikeal Rogers <mikeal.rogers@gmail.com>",
   "contributors": [
     "Sergey Bakulin <sergey.bakulin.github@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vansergen/request.git"
+    "url": "git+https://github.com/vansergen/request3.git"
   },
   "bugs": {
-    "url": "http://github.com/vansergen/request/issues"
+    "url": "http://github.com/vansergen/request3/issues"
   },
   "license": "Apache-2.0",
   "engines": {
@@ -49,13 +49,15 @@
     "uuid": "^3.4.0"
   },
   "scripts": {
+    "fresh-install": "rm -fr node_modules && rm -f package-lock.json && npm install",
     "lint": "eslint --ext .js ./",
     "lint-fix": "npm run lint -- --fix",
+    "prepublishOnly": "npm run prettier && npm run lint && npm test && npm run test-browser",
     "prettier": "prettier -c \"**/*.{js,md,ts,json}\"",
     "prettier-write": "npm run prettier -- --write",
+    "coverage": "nyc npm test && nyc report --reporter=lcov",
+    "coverage-ci": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "test": "mocha --ui tdd **/*.spec.js",
-    "test-tap": "taper tests/test-*.js",
-    "test-cov": "nyc --reporter=lcov tape tests/test-*.js",
     "test-browser": "node test/browser/start.js"
   },
   "devDependencies": {
@@ -78,13 +80,7 @@
     "puppeteer": "^2.1.1",
     "rimraf": "^3.0.2"
   },
-  "greenkeeper": {
-    "ignore": [
-      "hawk",
-      "har-validator"
-    ]
-  },
-  "homepage": "https://github.com/vansergen/request#readme",
+  "homepage": "https://github.com/vansergen/request3#readme",
   "directories": {
     "example": "example",
     "lib": "lib",
