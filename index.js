@@ -26,11 +26,11 @@ function initParams(uri, options, callback) {
 
   const params = {};
   if (options !== null && typeof options === "object") {
-    extend(params, options, { uri: uri });
+    Object.assign(params, options, { uri });
   } else if (typeof uri === "string") {
-    extend(params, { uri: uri });
+    Object.assign(params, { uri });
   } else {
-    extend(params, uri);
+    Object.assign(params, uri);
   }
 
   params.callback = callback || params.callback;
@@ -54,8 +54,7 @@ function request(uri, options, callback) {
 function verbFunc(verb) {
   const method = verb.toUpperCase();
   return (uri, options, callback) => {
-    const params = initParams(uri, options, callback);
-    params.method = method;
+    const params = { ...initParams(uri, options, callback), method };
     return request(params, params.callback);
   };
 }
@@ -116,18 +115,8 @@ request.defaults = function(options, requester) {
   return defaults;
 };
 
-request.forever = (agentOptions, optionsArg) => {
-  const options = {};
-  if (optionsArg) {
-    extend(options, optionsArg);
-  }
-  if (agentOptions) {
-    options.agentOptions = agentOptions;
-  }
-
-  options.forever = true;
-  return request.defaults(options);
-};
+request.forever = (agentOptions, optionsArg = {}) =>
+  request.defaults({ ...optionsArg, agentOptions, forever: true });
 
 // Exports
 

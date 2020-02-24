@@ -12,7 +12,6 @@ const httpSignature = require("http-signature");
 const mime = require("mime-types");
 const caseless = require("caseless");
 const FormData = require("form-data");
-const extend = require("extend");
 const isTypedArray = require("is-typedarray").strict;
 const {
   safeStringify,
@@ -85,7 +84,7 @@ class Request extends Stream {
     const reserved = Object.keys(Request.prototype);
     const nonReserved = filterForNonReserved(reserved, options);
 
-    extend(this, nonReserved);
+    Object.assign(this, nonReserved);
     options = filterOutReservedFunctions(reserved, options);
 
     this.readable = true;
