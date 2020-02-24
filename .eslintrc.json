@@ -1,0 +1,18 @@
+{
+  "extends": ["eslint:recommended"],
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "curly": "error",
+    "eqeqeq": "error",
+    "linebreak-style": "error",
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "prefer-destructuring": "error",
+    "semi": "error"
+  }
+}
