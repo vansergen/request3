@@ -35,7 +35,6 @@ const { Multipart } = require("./lib/multipart");
 const { Redirect } = require("./lib/redirect");
 const { Tunnel } = require("./lib/tunnel");
 const now = require("performance-now");
-const { Buffer } = require("safe-buffer");
 
 const globalCookieJar = cookies.jar();
 
