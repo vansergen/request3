@@ -11,7 +11,6 @@ const aws4 = require("aws4");
 const httpSignature = require("http-signature");
 const mime = require("mime-types");
 const caseless = require("caseless");
-const ForeverAgent = require("forever-agent");
 const FormData = require("form-data");
 const extend = require("extend");
 const isTypedArray = require("is-typedarray").strict;
@@ -20,8 +19,7 @@ const {
   isReadStream,
   toBase64,
   defer,
-  copy,
-  version
+  copy
 } = require("./lib/helpers");
 const cookies = require("./lib/cookies");
 const getProxyFromURI = require("./lib/getProxyFromURI");
@@ -924,16 +922,9 @@ class Request extends Stream {
       if (options.agentClass) {
         this.agentClass = options.agentClass;
       } else if (options.forever) {
-        const v = version();
-        // use ForeverAgent in node 0.10- only
-        if (v.major === 0 && v.minor <= 10) {
-          this.agentClass =
-            protocol === "http:" ? ForeverAgent : ForeverAgent.SSL;
-        } else {
-          this.agentClass = this.httpModule.Agent;
-          this.agentOptions = this.agentOptions || {};
-          this.agentOptions.keepAlive = true;
-        }
+        this.agentClass = this.httpModule.Agent;
+        this.agentOptions = this.agentOptions || {};
+        this.agentOptions.keepAlive = true;
       } else {
         this.agentClass = this.httpModule.Agent;
       }
