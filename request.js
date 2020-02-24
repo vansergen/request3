@@ -14,7 +14,6 @@ const caseless = require("caseless");
 const ForeverAgent = require("forever-agent");
 const FormData = require("form-data");
 const extend = require("extend");
-const isstream = require("isstream");
 const isTypedArray = require("is-typedarray").strict;
 const {
   safeStringify,
@@ -892,7 +891,7 @@ class Request extends Stream {
         }
       }
     };
-    if (this.body && !isstream(this.body)) {
+    if (this.body && !(this.body instanceof Stream)) {
       setContentLength();
     }
 
@@ -998,7 +997,7 @@ class Request extends Stream {
           this._multipart.body.pipe(this);
         }
         if (this.body) {
-          if (isstream(this.body)) {
+          if (this.body instanceof Stream) {
             this.body.pipe(this);
           } else {
             setContentLength();
