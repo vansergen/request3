@@ -46,7 +46,7 @@
     "qs": "^6.9.1",
     "tough-cookie": "^3.0.1",
     "tunnel-agent": "^0.6.0",
-    "uuid": "^3.4.0"
+    "uuid": "^7.0.1"
   },
   "scripts": {
     "fresh-install": "rm -fr node_modules && rm -f package-lock.json && npm install",
